@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Vente de bateaux neufs et d'occasion — Sea Fun Boat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/site.css"/>
+  <style>
+    .sale-card { display: grid; grid-template-columns: 240px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--rule); }
+    @media (max-width: 768px) { .sale-card { grid-template-columns: 1fr; } }
+    .sidebar-filter { position: sticky; top: 110px; }
+    .range-line { position: relative; padding-top: 6px; padding-bottom: 6px; }
+    .range-line input[type="range"] {
+      width: 100%; appearance: none; -webkit-appearance: none;
+      height: 2px; background: var(--rule); outline: none;
+    }
+    .range-line input[type="range"]::-webkit-slider-thumb {
+      appearance: none; -webkit-appearance: none;
+      width: 16px; height: 16px; background: var(--ink); border-radius: 50%; cursor: pointer;
+    }
+    .range-line input[type="range"]::-moz-range-thumb {
+      width: 16px; height: 16px; background: var(--ink); border-radius: 50%; cursor: pointer; border: 0;
+    }
+    .filter-group + .filter-group { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--rule-soft); }
+  </style>
+</head>
+<body data-current="vente">
+
+<div data-slot="header"></div>
+
+<main>
+  <!-- ============ PAGE HEAD ============ -->
+  <section style="padding-top:32px; padding-bottom:32px;">
+    <div class="container-x">
+      <div class="flex items-center gap-2" style="font-family:var(--font-mono); font-size:11px; color:var(--ink-soft); letter-spacing:0.1em; text-transform:uppercase;">
+        <a href="index.html">Accueil</a><span>›</span><span style="color:var(--ink);">Vente</span>
+      </div>
+
+      <div class="grid grid-cols-12 gap-6 items-end" style="margin-top:32px;">
+        <div class="col-span-12 md:col-span-8">
+          <div class="kicker">N°02 · Vente · Neuf & occasion</div>
+          <h1 class="display-1" style="margin-top:14px;">Le bateau qui<br/><em>vous ressemble</em>.</h1>
+        </div>
+        <div class="col-span-12 md:col-span-4">
+          <p class="lede">
+            Concessionnaire Selva, Marlin Boat et Protagon. Bateaux neufs configurables et occasions vérifiées en chantier — toutes les annonces ci-dessous.
+          </p>
+        </div>
+      </div>
+
+      <div class="rule" style="margin-top:36px;"></div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6" style="padding-top:24px;">
+        <div>
+          <div class="serif tnum" style="font-size:44px; line-height:1;" id="stat-count">—</div>
+          <div class="kicker" style="margin-top:6px;">Annonces actives</div>
+        </div>
+        <div>
+          <div class="serif tnum" style="font-size:44px; line-height:1;" id="stat-new">—</div>
+          <div class="kicker" style="margin-top:6px;">Neufs disponibles</div>
+        </div>
+        <div>
+          <div class="serif tnum" style="font-size:44px; line-height:1;" id="stat-occ">—</div>
+          <div class="kicker" style="margin-top:6px;">Occasions</div>
+        </div>
+        <div>
+          <div class="serif tnum" style="font-size:44px; line-height:1;">03</div>
+          <div class="kicker" style="margin-top:6px;">Marques officielles</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LIST + SIDEBAR ============ -->
+  <section style="padding-top:32px; padding-bottom:64px;">
+    <div class="container-x">
+      <div class="grid grid-cols-12 gap-8">
+
+        <!-- ===== SIDEBAR ===== -->
+        <aside class="col-span-12 md:col-span-4 lg:col-span-3">
+          <div class="sidebar-filter card" style="padding:24px;">
+            <div class="flex items-center justify-between">
+              <h2 class="kicker">Critères</h2>
+              <button id="reset-filters" class="mono" style="font-size:11px; color:var(--rust); letter-spacing:0.1em; text-transform:uppercase;">Réinitialiser</button>
+            </div>
+
+            <!-- État -->
+            <div class="filter-group">
+              <div class="field-label">État</div>
+              <div class="flex flex-wrap gap-2">
+                <button class="chip is-active" data-f="condition" data-v="all">Tous</button>
+                <button class="chip" data-f="condition" data-v="neuf">Neuf</button>
+                <button class="chip" data-f="condition" data-v="occasion">Occasion</button>
+              </div>
+            </div>
+
+            <!-- Coque -->
+            <div class="filter-group">
+              <div class="field-label">Type de coque</div>
+              <div class="flex flex-wrap gap-2">
+                <button class="chip is-active" data-f="hull" data-v="all">Tous</button>
+                <button class="chip" data-f="hull" data-v="rigide">Rigide</button>
+                <button class="chip" data-f="hull" data-v="semi-rigide">Semi-rigide</button>
+              </div>
+            </div>
+
+            <!-- Marque -->
+            <div class="filter-group">
+              <div class="field-label">Marque</div>
+              <div id="brand-chips" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <!-- Prix -->
+            <div class="filter-group">
+              <div class="flex items-baseline justify-between">
+                <div class="field-label" style="margin-bottom:0;">Prix maximum</div>
+                <div class="mono tnum" id="price-display" style="font-size:13px; color:var(--ink-2);">— €</div>
+              </div>
+              <div class="range-line">
+                <input type="range" id="price-range" min="10000" max="100000" step="1000" value="100000"/>
+              </div>
+              <div class="flex justify-between mono" style="font-size:10px; color:var(--ink-soft); letter-spacing:0.1em;">
+                <span>10 000 €</span><span>100 000 €</span>
+              </div>
+            </div>
+
+            <!-- Longueur -->
+            <div class="filter-group">
+              <div class="flex items-baseline justify-between">
+                <div class="field-label" style="margin-bottom:0;">Longueur min.</div>
+                <div class="mono tnum" id="length-display" style="font-size:13px; color:var(--ink-2);">— m</div>
+              </div>
+              <div class="range-line">
+                <input type="range" id="length-range" min="4" max="9" step="0.5" value="4"/>
+              </div>
+              <div class="flex justify-between mono" style="font-size:10px; color:var(--ink-soft); letter-spacing:0.1em;">
+                <span>4 m</span><span>9 m</span>
+              </div>
+            </div>
+
+            <!-- Puissance -->
+            <div class="filter-group">
+              <div class="flex items-baseline justify-between">
+                <div class="field-label" style="margin-bottom:0;">Puissance min.</div>
+                <div class="mono tnum" id="power-display" style="font-size:13px; color:var(--ink-2);">— CV</div>
+              </div>
+              <div class="range-line">
+                <input type="range" id="power-range" min="0" max="300" step="10" value="0"/>
+              </div>
+              <div class="flex justify-between mono" style="font-size:10px; color:var(--ink-soft); letter-spacing:0.1em;">
+                <span>0 CV</span><span>300 CV</span>
+              </div>
+            </div>
+
+            <!-- Année min -->
+            <div class="filter-group">
+              <div class="flex items-baseline justify-between">
+                <div class="field-label" style="margin-bottom:0;">Année min.</div>
+                <div class="mono tnum" id="year-display" style="font-size:13px; color:var(--ink-2);">— </div>
+              </div>
+              <div class="range-line">
+                <input type="range" id="year-range" min="2010" max="2026" step="1" value="2010"/>
+              </div>
+              <div class="flex justify-between mono" style="font-size:10px; color:var(--ink-soft); letter-spacing:0.1em;">
+                <span>2010</span><span>2026</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- ===== LIST ===== -->
+        <section class="col-span-12 md:col-span-8 lg:col-span-9">
+          <div class="flex flex-wrap items-baseline justify-between gap-3" style="margin-bottom:16px;">
+            <div id="sale-count" class="kicker"></div>
+            <div class="flex items-center gap-2">
+              <label class="mono" style="font-size:11px; letter-spacing:0.12em; color:var(--ink-soft); text-transform:uppercase;">Trier</label>
+              <select id="sale-sort" class="field" style="padding:8px 12px; width:auto;">
+                <option value="default">Pertinence</option>
+                <option value="price-asc">Prix croissant</option>
+                <option value="price-desc">Prix décroissant</option>
+                <option value="year-desc">Plus récent</option>
+                <option value="length">Plus grand</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="sale-list"></div>
+          <div id="sale-empty" style="display:none; padding:80px 0; text-align:center; color:var(--ink-soft);">
+            Aucune annonce ne correspond à vos critères. <button id="clear-all" class="btn-link">Tout réinitialiser</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA / contact direct ============ -->
+  <section style="padding-top:64px;">
+    <div class="container-x">
+      <div style="background:var(--paper); border:1px solid var(--rule); padding:48px;">
+        <div class="grid grid-cols-12 gap-6 items-center">
+          <div class="col-span-12 md:col-span-8">
+            <div class="section-num">N°03 · Sur mesure</div>
+            <h2 class="display-3" style="margin-top:14px;">Vous ne trouvez pas votre bateau ?</h2>
+            <p style="margin-top:14px; max-width:50ch; color:var(--ink-2); line-height:1.6;">
+              On le cherche pour vous. Décrivez-nous votre projet — programme, budget, équipage — et nous vous proposons trois options sous une semaine.
+            </p>
+          </div>
+          <div class="col-span-12 md:col-span-4 md:text-right">
+            <a href="contact.html" class="btn btn-navy">Décrire mon projet</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div data-slot="footer"></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/site.js"></script>
+<script>
+  const sState = {
+    condition: 'all',
+    hull: 'all',
+    brand: 'all',
+    maxPrice: 100000,
+    minLength: 4,
+    minPower: 0,
+    minYear: 2010,
+    sort: 'default',
+  };
+
+  // Populate brand chips dynamically
+  const brands = Array.from(new Set((window.SFB_SALES || []).map((s) => s.builder))).sort();
+  const brandChips = document.getElementById('brand-chips');
+  brandChips.innerHTML = `<button class="chip is-active" data-f="brand" data-v="all">Toutes</button>` +
+    brands.map((b) => `<button class="chip" data-f="brand" data-v="${b}">${b}</button>`).join('');
+
+  function fmt(n) { return n.toLocaleString('fr-FR'); }
+
+  function renderSale(s) {
+    return `
+      <article class="sale-card">
+        <div class="photo-slot photo-slot--photo" style="aspect-ratio:4/3; min-height:180px; background-image:linear-gradient(rgba(6,41,66,0.05),rgba(6,41,66,0.4)),url('${s.photo || ''}'); background-size:cover; background-position:center;">
+          <div class="photo-slot__corner">${s.length.toFixed(1)} m · ${s.power} CV</div>
+          <div class="photo-slot__cap">${s.model}</div>
+          ${s.tag ? `<span class="tag ${s.condition === 'neuf' ? 'tag-teal' : 'tag-rust'}" style="position:absolute; top:14px; left:14px;">${s.tag}</span>` : ''}
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-baseline gap-3 flex-wrap">
+            <span class="tag ${s.condition === 'neuf' ? 'tag-teal' : ''}">${s.condition === 'neuf' ? 'Neuf' : 'Occasion'}</span>
+            <span class="kicker">${s.builder} · ${s.year}</span>
+          </div>
+          <h3 class="serif" style="font-size:30px; line-height:1.05; margin-top:6px;">${s.model}</h3>
+          <p style="margin-top:8px; font-size:14px; color:var(--ink-2); line-height:1.6; max-width:60ch;">${s.desc}</p>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-1" style="margin-top:14px;">
+            <div class="spec-row" style="border:0; padding:6px 0;"><span>Coque</span><span>${s.hull === 'rigide' ? 'Rigide' : 'Semi-rigide'}</span></div>
+            <div class="spec-row" style="border:0; padding:6px 0;"><span>Longueur</span><span>${s.length.toFixed(1)} m</span></div>
+            <div class="spec-row" style="border:0; padding:6px 0;"><span>Puissance</span><span>${s.power} CV</span></div>
+            <div class="spec-row" style="border:0; padding:6px 0;"><span>${s.condition === 'neuf' ? 'Délai' : 'Heures'}</span><span>${s.condition === 'neuf' ? (s.hours === 0 ? 'Stock' : '6 sem.') : s.hours + ' h'}</span></div>
+          </div>
+
+          <div class="dot-rule" style="margin:18px 0 14px;"></div>
+
+          <div class="flex items-end justify-between gap-4 flex-wrap">
+            <div>
+              <div class="mono" style="font-size:10px; letter-spacing:0.12em; color:var(--ink-soft);">PRIX TTC</div>
+              <div class="serif tnum" style="font-size:34px; line-height:1;">${fmt(s.price)} €</div>
+            </div>
+            <div class="flex gap-2">
+              <a href="contact.html" class="btn btn-ghost">Plus d'infos</a>
+              <a href="contact.html" class="btn btn-rust">Visiter</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  function filterSort() {
+    let arr = (window.SFB_SALES || []).slice();
+    if (sState.condition !== 'all') arr = arr.filter((s) => s.condition === sState.condition);
+    if (sState.hull !== 'all') arr = arr.filter((s) => s.hull === sState.hull);
+    if (sState.brand !== 'all') arr = arr.filter((s) => s.builder === sState.brand);
+    arr = arr.filter((s) => s.price <= sState.maxPrice
+                          && s.length >= sState.minLength
+                          && s.power  >= sState.minPower
+                          && s.year   >= sState.minYear);
+    if (sState.sort === 'price-asc')  arr.sort((a, b) => a.price - b.price);
+    if (sState.sort === 'price-desc') arr.sort((a, b) => b.price - a.price);
+    if (sState.sort === 'year-desc')  arr.sort((a, b) => b.year - a.year);
+    if (sState.sort === 'length')     arr.sort((a, b) => b.length - a.length);
+    return arr;
+  }
+
+  function render() {
+    const arr = filterSort();
+    const list = document.getElementById('sale-list');
+    const empty = document.getElementById('sale-empty');
+    if (arr.length === 0) {
+      list.innerHTML = ''; empty.style.display = 'block';
+    } else {
+      empty.style.display = 'none';
+      list.innerHTML = arr.map(renderSale).join('');
+    }
+    document.getElementById('sale-count').textContent =
+      `${arr.length} annonce${arr.length > 1 ? 's' : ''} sur ${window.SFB_SALES.length}`;
+
+    document.getElementById('stat-count').textContent = window.SFB_SALES.length;
+    document.getElementById('stat-new').textContent = window.SFB_SALES.filter((s) => s.condition === 'neuf').length;
+    document.getElementById('stat-occ').textContent = window.SFB_SALES.filter((s) => s.condition === 'occasion').length;
+  }
+
+  function updateRangeDisplays() {
+    document.getElementById('price-display').textContent  = fmt(sState.maxPrice) + ' €';
+    document.getElementById('length-display').textContent = sState.minLength.toFixed(1) + ' m';
+    document.getElementById('power-display').textContent  = sState.minPower + ' CV';
+    document.getElementById('year-display').textContent   = sState.minYear;
+  }
+
+  // Click filters
+  document.addEventListener('click', (e) => {
+    const c = e.target.closest('[data-f][data-v]');
+    if (c) {
+      const k = c.dataset.f, v = c.dataset.v;
+      sState[k] = v;
+      document.querySelectorAll(`[data-f="${k}"]`).forEach((el) => el.classList.toggle('is-active', el.dataset.v === v));
+      render();
+    }
+  });
+
+  // Range inputs
+  ['price','length','power','year'].forEach((k) => {
+    const map = { price: 'maxPrice', length: 'minLength', power: 'minPower', year: 'minYear' };
+    document.getElementById(`${k}-range`).addEventListener('input', (e) => {
+      sState[map[k]] = parseFloat(e.target.value);
+      updateRangeDisplays();
+      render();
+    });
+  });
+
+  // Sort
+  document.getElementById('sale-sort').addEventListener('change', (e) => { sState.sort = e.target.value; render(); });
+
+  // Reset
+  function resetAll() {
+    sState.condition = 'all'; sState.hull = 'all'; sState.brand = 'all';
+    sState.maxPrice = 100000; sState.minLength = 4; sState.minPower = 0; sState.minYear = 2010;
+    document.getElementById('price-range').value = 100000;
+    document.getElementById('length-range').value = 4;
+    document.getElementById('power-range').value = 0;
+    document.getElementById('year-range').value = 2010;
+    document.querySelectorAll('[data-f]').forEach((el) => el.classList.toggle('is-active', el.dataset.v === 'all'));
+    updateRangeDisplays();
+    render();
+  }
+  document.getElementById('reset-filters').addEventListener('click', resetAll);
+  document.getElementById('clear-all')?.addEventListener('click', resetAll);
+
+  updateRangeDisplays();
+  render();
+</script>
+
+</body>
+</html>
