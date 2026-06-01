@@ -58,7 +58,6 @@
           <a href="#" class="hover:text-[color:var(--cream)]">Mentions légales</a>
           <a href="#" class="hover:text-[color:var(--cream)]">CGV / CGU</a>
           <a href="#" class="hover:text-[color:var(--cream)]">RGPD</a>
-          <a href="#" class="hover:text-[color:var(--cream)]">Météo</a>
         </div>
       </div>
     </div>

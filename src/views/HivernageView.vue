@@ -1,16 +1,18 @@
 <template>
-  <section style="padding-top:32px; padding-bottom:32px;">
+  <section style="padding-top:32px; padding-bottom:24px;">
     <div class="container-x">
       <div class="flex items-center gap-2" style="font-family:var(--font-mono); font-size:11px; color:var(--ink-soft); letter-spacing:0.1em; text-transform:uppercase;">
-        <RouterLink :to="{ name: 'home' }">Accueil</RouterLink><span>›</span><span style="color:var(--ink);">Nos services</span>
+        <RouterLink :to="{ name: 'home' }">Accueil</RouterLink><span>›</span>
+        <RouterLink :to="{ name: 'chantier' }">Chantier naval</RouterLink><span>›</span>
+        <span style="color:var(--ink);">Hivernage</span>
       </div>
       <div class="grid grid-cols-12 gap-6 items-end" style="margin-top:32px;">
         <div class="col-span-12 md:col-span-8">
-          <div class="kicker">N°03 · Chantier naval</div>
-          <h1 class="display-1" style="margin-top:14px;">Nos services.</h1>
+          <div class="kicker">N°03·B · Hivernage & stationnement</div>
+          <h1 class="display-1" style="margin-top:14px;">Hivernage,<br/><em>au sec</em>.</h1>
         </div>
         <div class="col-span-12 md:col-span-4">
-          <p class="lede">Du moteur à la sellerie, de la coque à l'électronique — tout ce dont votre bateau a besoin, sous le même toit.</p>
+          <p class="lede">Stockage à terre sous hangar couvert ou à flot. Programme d'hivernage moteur complet, antifouling, polish — remise à l'eau clé en main au printemps.</p>
         </div>
       </div>
     </div>
@@ -19,39 +21,70 @@
   <section>
     <div class="container-x">
       <div class="photo-slot photo-slot--photo" style="aspect-ratio:16/7; min-height:280px; background-image:linear-gradient(rgba(6,41,66,0.08),rgba(6,41,66,0.45)),url('/img/hivernage.jpg'); background-size:cover; background-position:center;">
-        <div class="photo-slot__corner">PHOTO · hivernage</div>
-        <div class="photo-slot__cap">Hangar couvert — stockage à terre, hiver 2024</div>
+        <div class="photo-slot__corner">PHOTO 01 · hangar</div>
+        <div class="photo-slot__cap">Hangar couvert — bateaux sur bers, stockage à sec</div>
       </div>
     </div>
   </section>
 
-  <section style="padding-bottom:96px;">
+  <section style="padding-top:96px;">
     <div class="container-x">
-      <div class="service-grid">
-        <div v-for="card in serviceCards" :key="card.label" class="service-card">
-          <div class="bg" :style="`background-image:url('${card.photo}')`"></div>
-          <div class="overlay"></div>
-          <span class="photo-label">{{ card.photoLabel }}</span>
-          <div class="content">
-            <div class="service-name" v-html="card.label"></div>
-            <div class="service-desc">{{ card.desc }}</div>
+      <div class="section-num">N°01 · Nos formules</div>
+      <h2 class="display-2" style="margin-top:14px;">Choisissez votre formule.</h2>
+      <div class="grid grid-cols-12 gap-x-8 gap-y-0" style="margin-top:56px;">
+
+        <article v-for="s in formules" :key="s.num" class="col-span-12 md:col-span-6" style="padding:32px 0; border-top:1px solid var(--rule);">
+          <div class="flex items-baseline gap-4">
+            <div class="serif" style="font-size:48px; line-height:1; color:var(--teal);">{{ s.num }}</div>
+            <h3 class="serif" style="font-size:30px; line-height:1.1;">{{ s.title }}</h3>
           </div>
+          <p style="margin-top:14px; color:var(--ink-2); line-height:1.7; max-width:48ch;">{{ s.desc }}</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:120px; padding-bottom:40px;">
+    <div class="container-x">
+      <div class="section-num">N°02 · Procédure</div>
+      <h2 class="display-2" style="margin-top:14px;">De la sortie d'eau au printemps.</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-x-8 gap-y-10" style="margin-top:56px;">
+        <div>
+          <div class="serif tnum" style="font-size:60px; line-height:1; color:var(--teal);">01</div>
+          <h3 style="margin-top:10px; font-weight:600;">Sortie d'eau</h3>
+          <p style="margin-top:8px; font-size:14px; color:var(--ink-2); line-height:1.6;">Levage par grue ou chariot élévateur. Transport jusqu'à l'emplacement dédié dans le hangar ou en extérieur.</p>
+        </div>
+        <div>
+          <div class="serif tnum" style="font-size:60px; line-height:1; color:var(--teal);">02</div>
+          <h3 style="margin-top:10px; font-weight:600;">Hivernage moteur</h3>
+          <p style="margin-top:8px; font-size:14px; color:var(--ink-2); line-height:1.6;">Vidange, rinçage circuit eau de mer, antigel, protection des pièces sensibles. Bateau prêt à repartir au printemps.</p>
+        </div>
+        <div>
+          <div class="serif tnum" style="font-size:60px; line-height:1; color:var(--teal);">03</div>
+          <h3 style="margin-top:10px; font-weight:600;">Entretien hivernal</h3>
+          <p style="margin-top:8px; font-size:14px; color:var(--ink-2); line-height:1.6;">Antifouling, polish coque, vérification accastillage — profitez de l'hiver pour remettre le bateau en état avant la saison.</p>
+        </div>
+        <div>
+          <div class="serif tnum" style="font-size:60px; line-height:1; color:var(--teal);">04</div>
+          <h3 style="margin-top:10px; font-weight:600;">Remise à l'eau</h3>
+          <p style="margin-top:8px; font-size:14px; color:var(--ink-2); line-height:1.6;">Mise à l'eau coordonnée avec votre planning de navigation. Essai moteur avant restitution.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section style="padding-bottom:96px;">
+  <section style="padding-top:80px;">
     <div class="container-x">
-      <div style="background:var(--ink); color:var(--cream); padding:48px;">
+      <div style="background:var(--paper); border:1px solid var(--rule); padding:48px;">
         <div class="grid grid-cols-12 gap-6 items-center">
           <div class="col-span-12 md:col-span-8">
-            <div class="kicker" style="color:var(--teal-light);">— Devis sous 48 h</div>
-            <h2 class="display-3" style="color:var(--cream); margin-top:10px;">Une question, un projet ?</h2>
-            <p style="margin-top:14px; color:rgba(244,239,230,0.75); max-width:48ch; line-height:1.6;">Décrivez votre bateau et le besoin. On vous rappelle dans la journée pour cadrer le devis.</p>
+            <h2 class="display-3">Réserver un emplacement</h2>
+            <p style="margin-top:12px; color:var(--ink-2); line-height:1.6;">Places limitées — réservez avant le 1er novembre pour garantir votre emplacement sous hangar couvert.</p>
           </div>
-          <div class="col-span-12 md:col-span-4 md:text-right">
-            <RouterLink :to="{ name: 'contact' }" class="btn btn-rust">Demander un devis</RouterLink>
+          <div class="col-span-12 md:col-span-4 md:text-right flex flex-col gap-2 md:items-end">
+            <a href="tel:0617284047" class="btn btn-rust">Appeler : 06 17 28 40 47</a>
+            <RouterLink :to="{ name: 'contact' }" class="btn btn-ghost">Demander un devis</RouterLink>
           </div>
         </div>
       </div>
@@ -60,29 +93,10 @@
 </template>
 
 <script setup lang="ts">
-const serviceCards = [
-  { label: 'Moteur',                      desc: 'Révision, réparation, entretien',                         photoLabel: 'PHOTO · moteur',       photo: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=600&q=80' },
-  { label: 'Selleries',                   desc: 'Pose et réparation tauds, biminis, capotes et selleries', photoLabel: 'PHOTO · sellerie',      photo: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80' },
-  { label: 'Revêtements<br/>antidérapants', desc: 'Pose de revêtements résistants et durables',            photoLabel: 'PHOTO · revêtement',    photo: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80' },
-  { label: 'Accastillage',                desc: 'Pose et entretien',                                       photoLabel: 'PHOTO · accastillage',  photo: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80' },
-  { label: 'Électricité<br/>Électronique', desc: 'Installation, maintenance, réparation',                  photoLabel: 'PHOTO · électronique',  photo: 'https://images.unsplash.com/photo-1569263979104-d88a42b4f1b2?auto=format&fit=crop&w=600&q=80' },
-  { label: 'Menuiserie',                  desc: 'Travaux bois et composites',                              photoLabel: 'PHOTO · menuiserie',    photo: 'https://images.unsplash.com/photo-1533745177687-4f2c5dcbc9e2?auto=format&fit=crop&w=600&q=80' },
-  { label: 'Coque',                       desc: 'Réparation gel-coat · Lustrage de coque',                 photoLabel: 'PHOTO · coque',         photo: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=600&q=80' },
-  { label: 'Nettoyage<br/>Tauds, Sellerie', desc: 'Nettoyage professionnel',                               photoLabel: 'PHOTO · nettoyage',     photo: 'https://images.unsplash.com/photo-1570007166718-9d67b0a30b32?auto=format&fit=crop&w=600&q=80' },
-  { label: 'Hivernage /<br/>Stationnement', desc: 'Au sec et à l\'abri',                                   photoLabel: 'PHOTO · hivernage',     photo: 'https://images.unsplash.com/photo-1559839914-17aae19cec71?auto=format&fit=crop&w=600&q=80' },
+const formules = [
+  { num: 'B·1', title: 'Hangar couvert',      desc: 'Stockage à l\'abri des intempéries dans notre hangar fermé. Solution idéale pour protéger la coque, la sellerie et les équipements électroniques pendant la saison froide.' },
+  { num: 'B·2', title: 'Extérieur sur bers',  desc: 'Stationnement sécurisé à l\'extérieur sur bers adaptés à la taille de votre bateau. Bâche de protection fournie sur demande. Tarif économique.' },
+  { num: 'B·3', title: 'Hivernage complet',   desc: 'Formule tout compris : sortie d\'eau, hivernage moteur, antifouling, polish et remise à l\'eau au printemps. Un interlocuteur unique pour toute la saison.' },
+  { num: 'B·4', title: 'Stationnement annuel', desc: 'Emplacement à l\'année pour les propriétaires qui souhaitent un accès régulier à leur bateau hors saison. Accès 7 j / 7 sur rendez-vous.' },
 ]
 </script>
-
-<style scoped>
-.service-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
-@media (max-width:768px) { .service-grid { grid-template-columns:repeat(2,1fr); } }
-@media (max-width:480px) { .service-grid { grid-template-columns:1fr; } }
-.service-card { position:relative; aspect-ratio:1/1; overflow:hidden; background:#1a2a2e; }
-.service-card .bg { position:absolute; inset:0; background-size:cover; background-position:center; transition:transform 0.4s ease; }
-.service-card:hover .bg { transform:scale(1.05); }
-.service-card .overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.2) 55%,rgba(0,0,0,0.05) 100%); }
-.service-card .content { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:24px; }
-.service-card .service-name { font-family:var(--font-display,'Bricolage Grotesque',sans-serif); font-size:clamp(17px,1.8vw,24px); font-weight:800; text-transform:uppercase; letter-spacing:0.05em; color:#fff; line-height:1.1; }
-.service-card .service-desc { margin-top:7px; font-size:clamp(12px,1.1vw,14px); color:rgba(255,255,255,0.8); line-height:1.45; }
-.photo-label { position:absolute; top:12px; right:12px; font-family:var(--font-mono,'JetBrains Mono',monospace); font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.35); }
-</style>

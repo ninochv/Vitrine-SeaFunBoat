@@ -68,7 +68,25 @@
     </div>
   </section>
 
-  <section style="padding-top:120px;">
+  <section style="padding-top:120px; padding-bottom:96px;">
+    <div class="container-x">
+      <div class="section-num">N°02 · Tous nos services</div>
+      <h2 class="display-2" style="margin-top:14px;">En détail.</h2>
+      <div class="service-grid" style="margin-top:48px;">
+        <div v-for="card in serviceCards" :key="card.photoLabel" class="service-card">
+          <div class="bg" :style="`background-image:url('${card.photo}')`"></div>
+          <div class="overlay"></div>
+          <span class="photo-label">{{ card.photoLabel }}</span>
+          <div class="content">
+            <div class="service-name" v-html="card.label"></div>
+            <div class="service-desc">{{ card.desc }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0; padding-bottom:80px;">
     <div class="container-x">
       <div style="background:var(--ink); color:var(--cream); padding:48px;">
         <div class="grid grid-cols-12 gap-6 items-center">
@@ -86,4 +104,30 @@
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const serviceCards = [
+  { label: 'Moteur',                        desc: 'Révision, réparation, entretien',                         photoLabel: 'PHOTO · moteur',       photo: '/img/services/motor.jpg' },
+  { label: 'Selleries',                     desc: 'Pose et réparation tauds, biminis, capotes et selleries', photoLabel: 'PHOTO · sellerie',      photo: '/img/services/sellerie-entretien.jpg' },
+  { label: 'Revêtements<br/>antidérapants', desc: 'Pose de revêtements résistants et durables',              photoLabel: 'PHOTO · revêtement',    photo: '/img/services/revetement-sol-entretien.jpg' },
+  { label: 'Accastillage',                  desc: 'Pose et entretien',                                       photoLabel: 'PHOTO · accastillage',  photo: '/img/services/accastillage-entretien.jpg' },
+  { label: 'Électricité<br/>Électronique',  desc: 'Installation, maintenance, réparation',                   photoLabel: 'PHOTO · électronique',  photo: '/img/services/electricite-electronique.jpg' },
+  { label: 'Menuiserie',                    desc: 'Travaux bois et composites',                              photoLabel: 'PHOTO · menuiserie',    photo: '/img/services/bois-entretien.jpg' },
+  { label: 'Coque',                         desc: 'Réparation gel-coat · Lustrage de coque',                 photoLabel: 'PHOTO · coque',         photo: '/img/services/lustrage-coque.jpg' },
+  { label: 'Nettoyage<br/>Tauds, Sellerie', desc: 'Nettoyage professionnel',                                 photoLabel: 'PHOTO · nettoyage',     photo: '/img/services/bimini-entretien.jpg' },
+  { label: 'Hivernage /<br/>Stationnement', desc: 'Au sec et à l\'abri',                                     photoLabel: 'PHOTO · hivernage',     photo: '/img/hivernage.jpg' },
+]
+</script>
+
+<style scoped>
+.service-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+@media (max-width:768px) { .service-grid { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:480px) { .service-grid { grid-template-columns:1fr; } }
+.service-card { position:relative; aspect-ratio:1/1; overflow:hidden; background:#1a2a2e; }
+.service-card .bg { position:absolute; inset:0; background-size:cover; background-position:center; transition:transform 0.4s ease; }
+.service-card:hover .bg { transform:scale(1.05); }
+.service-card .overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.2) 55%,rgba(0,0,0,0.05) 100%); }
+.service-card .content { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:24px; }
+.service-card .service-name { font-family:var(--font-display,'Bricolage Grotesque',sans-serif); font-size:clamp(17px,1.8vw,24px); font-weight:800; text-transform:uppercase; letter-spacing:0.05em; color:#fff; line-height:1.1; }
+.service-card .service-desc { margin-top:7px; font-size:clamp(12px,1.1vw,14px); color:rgba(255,255,255,0.8); line-height:1.45; }
+.photo-label { position:absolute; top:12px; right:12px; font-family:var(--font-mono,'JetBrains Mono',monospace); font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.35); }
+</style>
