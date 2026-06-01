@@ -93,10 +93,10 @@
             </nav>
 
             <div class="flex items-center gap-2">
-              <button class="btn btn-rust hidden sm:inline-flex" data-action="open-booking">
+              <a href="https://seafunboat.seabook.pro" target="_blank" rel="noopener" class="btn btn-rust hidden sm:inline-flex">
                 Réserver
                 <span class="w-4 h-4 inline-block">${ICON.arrow}</span>
-              </button>
+              </a>
               <button class="lg:hidden p-2" aria-label="Menu" data-action="toggle-mobile-nav">
                 <span class="w-6 h-6 inline-block" style="color:var(--ink);">${ICON.menu}</span>
               </button>
@@ -119,7 +119,7 @@
               return `<a href="${BASE}${item.href}">${item.label}</a>`;
             }).join('')}
             <a href="tel:0494494466" style="color:var(--rust);">04 94 49 44 66</a>
-            <button class="btn btn-rust w-full justify-center" style="margin-top:14px;" data-action="open-booking">Réserver une sortie</button>
+            <a href="https://seafunboat.seabook.pro" target="_blank" rel="noopener" class="btn btn-rust w-full justify-center" style="margin-top:14px;">Réserver une sortie</a>
           </div>
         </div>
       </header>
