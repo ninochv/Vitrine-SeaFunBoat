@@ -22,6 +22,10 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 # via envsubst — plus fiable que la substitution manuelle dans CMD
 COPY nginx.conf.template /etc/nginx/templates/default.conf.template
 
+# Script de démarrage : attend que l'API soit prête avant de lancer nginx
+COPY wait-for-api.sh /docker-entrypoint.d/05-wait-for-api.sh
+RUN chmod +x /docker-entrypoint.d/05-wait-for-api.sh
+
 # Variables runtime — à configurer dans Dokploy > Environment Variables
 ENV VITE_JETBOOK_BASE_URL=https://seafunboat.seabook.pro
 ENV VITE_JETBOOK_API_KEY=
