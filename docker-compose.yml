@@ -1,26 +1,15 @@
 services:
-  api:
-    build: ./api
-    restart: unless-stopped
-    volumes:
-      - sfb_data:/data
-    environment:
-      - ADMIN_PASS=sfb2025
-    healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/data/news"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
-      start_period: 5s
-
   web:
     build: .
     ports:
       - "80:4173"
     restart: unless-stopped
-    depends_on:
-      api:
-        condition: service_healthy
+    volumes:
+      - sfb_data:/data
+    environment:
+      - VITE_JETBOOK_BASE_URL=https://seafunboat.seabook.pro
+      - VITE_JETBOOK_API_KEY=
+      - ADMIN_PASS=sfb2025
 
 volumes:
   sfb_data:
