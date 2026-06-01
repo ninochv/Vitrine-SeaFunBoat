@@ -17,12 +17,8 @@ ENV VITE_BOOKING_URL=$VITE_BOOKING_URL
 
 RUN npm run build
 
-# Stage 2 — Serve
-FROM node:20-alpine AS runner
-WORKDIR /app
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/vite.config.ts ./
-RUN npm ci --omit=dev
-EXPOSE 4173
-CMD ["npx", "vite", "preview", "--host", "0.0.0.0", "--port", "4173"]
+# Stage 2 — Serve avec nginx (pas de Node en prod)
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
