@@ -22,6 +22,7 @@ FROM node:20-alpine AS runner
 WORKDIR /app
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/vite.config.ts ./
 RUN npm ci --omit=dev
 EXPOSE 4173
 CMD ["npx", "vite", "preview", "--host", "0.0.0.0", "--port", "4173"]
