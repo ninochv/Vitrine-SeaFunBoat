@@ -18,6 +18,9 @@ export default defineConfig(({ mode }) => {
         '/api': {
           target: apiBase,
           changeOrigin: true,
+          headers: {
+            'X-Vitrine-API-Key': env.VITE_JETBOOK_API_KEY || '',
+          },
         },
       },
     },

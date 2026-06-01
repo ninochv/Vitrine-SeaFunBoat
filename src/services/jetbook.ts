@@ -1,7 +1,6 @@
-const API_KEY = import.meta.env.VITE_JETBOOK_API_KEY as string
-// Toujours passer par l'origine courante :
-// - en dev  → Vite proxy (/api/ → VITE_JETBOOK_BASE_URL via vite.config.ts)
-// - en prod → nginx proxy (/api/ → VITE_JETBOOK_BASE_URL via nginx.conf.template)
+// Pas de clé API dans le JS — ajoutée par le proxy :
+// - dev  → Vite proxy (vite.config.ts, lu depuis .env local)
+// - prod → nginx proxy (nginx.conf.template, lu depuis env var runtime Dokploy)
 const API_ORIGIN = window.location.origin
 
 export interface JetBookPricing {
@@ -62,9 +61,7 @@ async function apiFetch<T>(path: string, params?: Record<string, string>): Promi
   if (params) {
     Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v))
   }
-  const res = await fetch(url.toString(), {
-    headers: { 'X-Vitrine-API-Key': API_KEY },
-  })
+  const res = await fetch(url.toString())
   if (!res.ok) throw new Error(`Erreur API : ${res.status}`)
   return res.json()
 }

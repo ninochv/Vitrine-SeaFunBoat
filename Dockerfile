@@ -7,11 +7,9 @@ RUN npm ci
 
 COPY . .
 
-# Seule variable Vite nécessaire au build (injectée dans le bundle JS)
-ARG VITE_JETBOOK_API_KEY
-ARG VITE_JETBOOK_BASE_URL=https://trial2.seabook.pro
-ARG VITE_BOOKING_URL
-ENV VITE_JETBOOK_API_KEY=$VITE_JETBOOK_API_KEY
+# VITE_JETBOOK_BASE_URL sert uniquement au fallback du lien "Réserver" dans le bundle
+ARG VITE_JETBOOK_BASE_URL=https://seafunboat.seabook.pro
+ARG VITE_BOOKING_URL=https://seafunboat.seabook.pro
 ENV VITE_JETBOOK_BASE_URL=$VITE_JETBOOK_BASE_URL
 ENV VITE_BOOKING_URL=$VITE_BOOKING_URL
 
@@ -22,9 +20,10 @@ FROM nginx:alpine
 COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx.conf.template /tmp/nginx.conf.template
 
-# URL JetBook pour le proxy nginx — configurable via env var Dokploy (runtime, pas build-time)
-ENV JETBOOK_BASE_URL=https://trial2.seabook.pro
+# Variables runtime — à configurer dans Dokploy "Environment Variables" (pas Build Args)
+ENV JETBOOK_BASE_URL=https://seafunboat.seabook.pro
+ENV JETBOOK_API_KEY=
 
-# envsubst substitue uniquement ${JETBOOK_BASE_URL}, les vars nginx ($uri, $http_host…) sont préservées
-CMD ["/bin/sh", "-c", "envsubst '${JETBOOK_BASE_URL}' < /tmp/nginx.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
+# envsubst substitue uniquement les deux placeholders, les vars nginx ($uri etc.) sont préservées
+CMD ["/bin/sh", "-c", "envsubst '${JETBOOK_BASE_URL}${JETBOOK_API_KEY}' < /tmp/nginx.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
 EXPOSE 80
