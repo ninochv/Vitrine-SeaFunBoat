@@ -4,3 +4,16 @@ services:
     ports:
       - "80:4173"
     restart: unless-stopped
+    depends_on:
+      - api
+
+  api:
+    build: ./api
+    restart: unless-stopped
+    volumes:
+      - sfb_data:/data
+    environment:
+      - ADMIN_PASS=sfb2025
+
+volumes:
+  sfb_data:

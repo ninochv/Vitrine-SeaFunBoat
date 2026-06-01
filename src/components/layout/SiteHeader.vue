@@ -117,7 +117,8 @@ const NAV = [
       { label: 'Extension Fluviale',  name: 'permis-fluvial' },
     ],
   },
-  { key: 'contact', label: 'Contact', sub: null },
+  { key: 'actualites', label: 'Actualités', sub: null },
+  { key: 'contact',    label: 'Contact',    sub: null },
 ]
 
 function isActive(key: string) {

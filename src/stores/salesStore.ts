@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, reactive, computed } from 'vue'
-import { useAdminStore } from './adminStore'
+import { dataApi } from '@/services/dataApi'
 import type { SaleBoat, HullType, Condition } from '@/data/types'
 
 type SortKey = 'default' | 'price-asc' | 'price-desc' | 'year-desc' | 'length'
@@ -16,9 +16,9 @@ interface Filters {
 }
 
 export const useSalesStore = defineStore('sales', () => {
-  const admin  = useAdminStore()
-  const boats  = ref<SaleBoat[]>([])
-  const sortBy = ref<SortKey>('default')
+  const boats   = ref<SaleBoat[]>([])
+  const loading = ref(false)
+  const sortBy  = ref<SortKey>('default')
   const filters = reactive<Filters>({
     condition: 'all',
     hull:      'all',
@@ -29,8 +29,10 @@ export const useSalesStore = defineStore('sales', () => {
     minYear:   2010,
   })
 
-  function loadFromStorage() {
-    boats.value = admin.loadBoats()
+  async function loadFromStorage() {
+    loading.value = true
+    boats.value   = await dataApi.getSales()
+    loading.value = false
   }
 
   const brands = computed(() =>
@@ -77,7 +79,7 @@ export const useSalesStore = defineStore('sales', () => {
     filters.minYear   = 2010
   }
 
-  function _persist() { admin.persist(boats.value) }
+  function _persist() { void dataApi.saveSales(boats.value) }
 
   function addBoat(boat: SaleBoat) {
     boats.value = [...boats.value, boat]
@@ -100,7 +102,7 @@ export const useSalesStore = defineStore('sales', () => {
   }
 
   return {
-    boats, sortBy, filters,
+    boats, loading, sortBy, filters,
     brands, stats, filteredBoats,
     loadFromStorage, setFilter, setSortBy, resetFilters,
     addBoat, updateBoat, deleteBoat,

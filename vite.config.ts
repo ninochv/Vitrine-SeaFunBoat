@@ -15,6 +15,10 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       proxy: {
+        '/data': {
+          target: 'http://localhost:3000',
+          changeOrigin: true,
+        },
         '/api': {
           target: apiBase,
           changeOrigin: true,

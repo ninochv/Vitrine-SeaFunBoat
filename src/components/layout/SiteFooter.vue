@@ -21,6 +21,7 @@
             <li style="margin-bottom:10px;"><RouterLink :to="{ name: 'vente' }" class="hover:underline">Vente</RouterLink></li>
             <li style="margin-bottom:10px;"><RouterLink :to="{ name: 'chantier' }" class="hover:underline">Chantier naval</RouterLink></li>
             <li style="margin-bottom:10px;"><RouterLink :to="{ name: 'permis' }" class="hover:underline">Permis bateau</RouterLink></li>
+            <li style="margin-bottom:10px;"><RouterLink :to="{ name: 'actualites' }" class="hover:underline">Actualités</RouterLink></li>
             <li style="margin-bottom:10px;"><RouterLink :to="{ name: 'contact' }" class="hover:underline">Contact</RouterLink></li>
           </ul>
         </div>

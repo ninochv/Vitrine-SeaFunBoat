@@ -4,6 +4,11 @@ server {
     root /usr/share/nginx/html;
     index index.html;
 
+    location /data/ {
+        proxy_pass http://api:3000;
+        proxy_set_header Host $host;
+    }
+
     location /api/ {
         proxy_pass ${VITE_JETBOOK_BASE_URL}/api/;
         proxy_set_header Host seafunboat.seabook.pro;

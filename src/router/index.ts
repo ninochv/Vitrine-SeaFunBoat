@@ -15,6 +15,8 @@ const router = createRouter({
     { path: '/permis-bateau/hauturier',    name: 'permis-hauturier',  component: () => import('@/views/PermisHauturierView.vue') },
     { path: '/permis-bateau/fluvial',      name: 'permis-fluvial',    component: () => import('@/views/PermisFluvialView.vue') },
     { path: '/contact',                    name: 'contact',           component: () => import('@/views/ContactView.vue') },
+    { path: '/actualites',                 name: 'actualites',        component: () => import('@/views/ActualitesView.vue') },
+    { path: '/actualites/:slug',           name: 'actualite',         component: () => import('@/views/ActualiteDetailView.vue') },
     { path: '/admin',                      name: 'admin',             component: () => import('@/views/admin/AdminView.vue') },
     { path: '/:pathMatch(.*)*',            redirect: '/' },
   ],

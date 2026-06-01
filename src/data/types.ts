@@ -19,3 +19,15 @@ export interface SaleBoat {
   photos: string[]
   photo?: string
 }
+
+export interface NewsArticle {
+  id: string
+  slug: string
+  title: string
+  date: string
+  category: string
+  summary: string
+  content: string
+  photos: string[]
+  published: boolean
+}
