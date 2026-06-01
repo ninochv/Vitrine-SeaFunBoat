@@ -13,8 +13,8 @@ RUN npm run build
 # Stage 2 — Prépare les dépendances de l'API
 FROM node:20-alpine AS api-builder
 WORKDIR /api
-COPY api/package*.json ./
-RUN npm ci --omit=dev
+COPY api/package.json ./
+RUN npm install --omit=dev
 
 # Stage 3 — Image finale : nginx + Node.js (même conteneur)
 FROM nginx:alpine
