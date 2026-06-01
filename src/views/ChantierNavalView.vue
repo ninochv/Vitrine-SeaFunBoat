@@ -73,7 +73,7 @@
       <div class="section-num">N°02 · Tous nos services</div>
       <h2 class="display-2" style="margin-top:14px;">En détail.</h2>
       <div class="service-grid" style="margin-top:48px;">
-        <div v-for="card in serviceCards" :key="card.photoLabel" class="service-card">
+        <div v-for="card in serviceCards" :key="card.photoLabel" class="service-card" @click="openLightbox(card)">
           <div class="bg" :style="`background-image:url('${card.photo}')`"></div>
           <div class="overlay"></div>
           <span class="photo-label">{{ card.photoLabel }}</span>
@@ -81,8 +81,23 @@
             <div class="service-name" v-html="card.label"></div>
             <div class="service-desc">{{ card.desc }}</div>
           </div>
+          <div class="zoom-hint">&#x2922;</div>
         </div>
       </div>
+
+      <!-- Lightbox -->
+      <Teleport to="body">
+        <div v-if="lightbox" class="lb-backdrop" @click.self="closeLightbox" @keydown.esc="closeLightbox">
+          <button class="lb-close" @click="closeLightbox" aria-label="Fermer">✕</button>
+          <div class="lb-inner">
+            <img :src="lightbox.photo" :alt="lightbox.photoLabel" class="lb-img" />
+            <div class="lb-caption">
+              <span class="lb-label" v-html="lightbox.label"></span>
+              <span class="lb-desc">{{ lightbox.desc }}</span>
+            </div>
+          </div>
+        </div>
+      </Teleport>
     </div>
   </section>
 
@@ -105,6 +120,20 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+
+interface ServiceCard { label: string; desc: string; photoLabel: string; photo: string }
+
+const lightbox = ref<ServiceCard | null>(null)
+function openLightbox(card: ServiceCard) {
+  lightbox.value = card
+  document.body.style.overflow = 'hidden'
+}
+function closeLightbox() {
+  lightbox.value = null
+  document.body.style.overflow = ''
+}
+
 const serviceCards = [
   { label: 'Moteur',                        desc: 'Révision, réparation, entretien',                         photoLabel: 'PHOTO · moteur',       photo: '/img/services/motor.jpg' },
   { label: 'Selleries',                     desc: 'Pose et réparation tauds, biminis, capotes et selleries', photoLabel: 'PHOTO · sellerie',      photo: '/img/services/sellerie-entretien.jpg' },
@@ -130,4 +159,17 @@ const serviceCards = [
 .service-card .service-name { font-family:var(--font-display,'Bricolage Grotesque',sans-serif); font-size:clamp(17px,1.8vw,24px); font-weight:800; text-transform:uppercase; letter-spacing:0.05em; color:#fff; line-height:1.1; }
 .service-card .service-desc { margin-top:7px; font-size:clamp(12px,1.1vw,14px); color:rgba(255,255,255,0.8); line-height:1.45; }
 .photo-label { position:absolute; top:12px; right:12px; font-family:var(--font-mono,'JetBrains Mono',monospace); font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.35); }
+.zoom-hint { position:absolute; top:12px; left:12px; font-size:18px; color:rgba(255,255,255,0.5); transition:color 0.2s; pointer-events:none; }
+.service-card:hover .zoom-hint { color:rgba(255,255,255,0.9); }
+.service-card { cursor:pointer; }
+
+/* Lightbox */
+.lb-backdrop { position:fixed; inset:0; z-index:200; background:rgba(6,41,66,0.92); backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; padding:24px; }
+.lb-close { position:absolute; top:20px; right:24px; background:none; border:none; color:#fff; font-size:24px; cursor:pointer; opacity:0.7; transition:opacity 0.2s; z-index:201; }
+.lb-close:hover { opacity:1; }
+.lb-inner { display:flex; flex-direction:column; align-items:center; max-width:min(90vw, 1100px); max-height:90vh; }
+.lb-img { max-width:100%; max-height:75vh; object-fit:contain; border-radius:12px; box-shadow:0 24px 80px rgba(0,0,0,0.6); }
+.lb-caption { margin-top:20px; text-align:center; color:#fff; }
+.lb-label { display:block; font-family:var(--font-display,'Bricolage Grotesque',sans-serif); font-size:22px; font-weight:700; letter-spacing:-0.01em; }
+.lb-desc { display:block; margin-top:6px; font-size:14px; color:rgba(255,255,255,0.65); }
 </style>
