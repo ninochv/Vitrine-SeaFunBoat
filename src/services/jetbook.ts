@@ -1,9 +1,8 @@
 const API_KEY = import.meta.env.VITE_JETBOOK_API_KEY as string
-// En dev, on passe par le proxy Vite (URL relative) pour éviter les erreurs CORS.
-// En prod, le site vitrine doit être whitelisté dans les CORS Django du backend JetBook.
-const API_ORIGIN = import.meta.env.DEV
-  ? window.location.origin
-  : (import.meta.env.VITE_JETBOOK_BASE_URL as string ?? 'https://trial2.seabook.pro')
+// Toujours passer par l'origine courante :
+// - en dev  → Vite proxy (/api/ → VITE_JETBOOK_BASE_URL via vite.config.ts)
+// - en prod → nginx proxy (/api/ → VITE_JETBOOK_BASE_URL via nginx.conf.template)
+const API_ORIGIN = window.location.origin
 
 export interface JetBookPricing {
   duration_type: string

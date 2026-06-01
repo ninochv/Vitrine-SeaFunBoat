@@ -140,7 +140,7 @@ const currentBgImage = computed(() => {
 })
 
 const bookingUrl = computed(() => {
-  const base = import.meta.env.VITE_JETBOOK_BASE_URL ?? 'https://trial2.seabook.pro'
+  const base = (import.meta.env.VITE_JETBOOK_BASE_URL as string || 'https://trial2.seabook.pro').replace(/\/$/, '')
   return `${base}/book/?jetski_id=${props.group.representative.id}`
 })
 
