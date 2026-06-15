@@ -38,13 +38,13 @@
   <section style="padding-top:40px; padding-bottom:30px;">
     <div class="container-x">
       <div style="border:1.5px solid var(--rust); border-radius:6px; padding:28px 32px; background:#fff8f5;">
-        <div class="kicker" style="color:var(--rust); margin-bottom:14px;">Informations importantes avant de louer votre bateau à coque rigide</div>
+        <div class="kicker" style="color:var(--rust); margin-bottom:14px;">Informations importantes avant de louer votre bateau</div>
         <ul style="font-size:14px; line-height:2; color:var(--ink-2);">
-          <li>· Permis bateau (selon prestation) valide</li>
+          <li>· Permis bateau valide</li>
           <li>· Pièce d'identité du titulaire du contrat ET du chef de bord (si celui-ci est différent)</li>
           <li>· Autorisation parentale (si mineur)</li>
           <li>· Acompte pour validation de la réservation, puis solde sur place avant réalisation de la prestation</li>
-          <li>· Caution sur place par empreinte bancaire (variable selon la prestation : 500 € à 3 000 €)</li>
+          <li>· Caution sur place par empreinte bancaire (variable selon la prestation : 500 € à 5 000 €)</li>
         </ul>
         <p style="margin-top:14px; font-size:13px; font-weight:600; color:var(--rust);">Sans ces éléments VALIDES nous ne pourrons aboutir à votre demande et nous nous verrons conserver votre dépôt d'acompte.</p>
       </div>
@@ -55,7 +55,7 @@
   <section style="padding-bottom:24px; position:sticky; top:78px; z-index:30; background:var(--cream); border-bottom:1px solid var(--rule);">
     <div class="container-x" style="padding-top:18px; padding-bottom:18px;">
       <div class="flex flex-col gap-3">
-        <!-- Ligne 1 : emplacement + permis -->
+        <!-- Ligne 1 : emplacement -->
         <div class="flex flex-wrap gap-6 items-center">
           <!-- Filtre emplacement (si plusieurs) -->
           <template v-if="store.uniqueLocations.length > 1">
@@ -75,16 +75,6 @@
               >{{ loc.name }}</button>
             </div>
           </template>
-
-          <div class="flex flex-wrap gap-2 items-center">
-            <span class="kicker" style="margin-right:6px;">Permis</span>
-            <button
-              v-for="opt in licenseOpts" :key="opt.value"
-              class="chip"
-              :class="{ 'is-active': store.filterLicense === opt.value }"
-              @click="store.setLicenseFilter(opt.value)"
-            >{{ opt.label }}</button>
-          </div>
         </div>
 
         <!-- Ligne 2 : tri -->
@@ -137,8 +127,8 @@
     <div class="container-x">
       <div class="grid grid-cols-12 gap-8">
         <div class="col-span-12 md:col-span-4"><div class="section-num">N°02 · Vocabulaire</div><h2 class="display-3" style="margin-top:14px;">Rigide<br/><em>ou semi-rigide</em> ?</h2></div>
-        <div class="col-span-12 md:col-span-4"><h3 class="kicker">Coque rigide</h3><p style="margin-top:10px; font-size:15px; line-height:1.7; color:var(--ink-2);">Coque entièrement en composite. Confort de mer dans la houle, espaces aménagés (cabine, douchette), idéal pour une journée complète au mouillage.</p><ul style="margin-top:14px; font-size:14px; line-height:1.8; color:var(--ink-2);"><li>· Plus stable au mouillage</li><li>· Cabine et rangements possibles</li><li>· Recommandée pour la journée et plus</li></ul></div>
-        <div class="col-span-12 md:col-span-4"><h3 class="kicker">Semi-rigide</h3><p style="margin-top:10px; font-size:15px; line-height:1.7; color:var(--ink-2);">Carène rigide + flotteurs gonflables sur le pourtour. Plus léger, plus vif, plus joueur. Parfait pour la sortie sportive en groupe.</p><ul style="margin-top:14px; font-size:14px; line-height:1.8; color:var(--ink-2);"><li>· Accélérations plus franches</li><li>· Sécurité accrue à l'embarquement</li><li>· Recommandé pour la baignade et la balade</li></ul></div>
+        <div class="col-span-12 md:col-span-4"><h3 class="kicker">Coque rigide (open et cabin cruiser)</h3><p style="margin-top:10px; font-size:15px; line-height:1.7; color:var(--ink-2);">Franc de bord plus élevé, espace à bord mieux aménagé.</p><ul style="margin-top:14px; font-size:14px; line-height:1.8; color:var(--ink-2);"><li>· Plus de confort au mouillage</li><li>· Sécurisant pour les parents avec enfants</li></ul></div>
+        <div class="col-span-12 md:col-span-4"><h3 class="kicker">Semi-rigide</h3><p style="margin-top:10px; font-size:15px; line-height:1.7; color:var(--ink-2);">Carène rigide + flotteurs gonflables sur le pourtour. Plus léger, plus vif, plus joueur. Parfait pour la sortie sportive en groupe.</p><ul style="margin-top:14px; font-size:14px; line-height:1.8; color:var(--ink-2);"><li>· Navire plus léger, donc consommation moindre</li><li>· Passage en mer plus agréable</li></ul></div>
       </div>
     </div>
   </section>
@@ -148,11 +138,12 @@
     <div class="container-x">
       <div class="section-num">N°03 · Procédure</div>
       <h2 class="display-2" style="margin-top:14px;">Comment ça se passe.</h2>
-      <div class="grid grid-cols-12 gap-x-6 gap-y-10" style="margin-top:56px;">
-        <div class="col-span-12 md:col-span-3"><div class="serif" style="font-size:64px; line-height:1; color:var(--teal);">01</div><h3 style="margin-top:12px; font-weight:600;">Vous réservez</h3><p style="margin-top:8px; font-size:14px; color:var(--ink-2); line-height:1.6;">En ligne ou par téléphone. Acompte 30 % pour bloquer la date, solde au départ.</p></div>
-        <div class="col-span-12 md:col-span-3"><div class="serif" style="font-size:64px; line-height:1; color:var(--teal);">02</div><h3 style="margin-top:12px; font-weight:600;">Brief sécurité</h3><p style="margin-top:8px; font-size:14px; color:var(--ink-2); line-height:1.6;">30 min de prise en main, balisage, météo, manœuvres au port, gilets et équipement.</p></div>
-        <div class="col-span-12 md:col-span-3"><div class="serif" style="font-size:64px; line-height:1; color:var(--teal);">03</div><h3 style="margin-top:12px; font-weight:600;">Vous naviguez</h3><p style="margin-top:8px; font-size:14px; color:var(--ink-2); line-height:1.6;">Téléphone d'assistance dans le sac de bord. Conseils de coins préférés pour chaque vent.</p></div>
-        <div class="col-span-12 md:col-span-3"><div class="serif" style="font-size:64px; line-height:1; color:var(--teal);">04</div><h3 style="margin-top:12px; font-weight:600;">Retour au port</h3><p style="margin-top:8px; font-size:14px; color:var(--ink-2); line-height:1.6;">Caution restituée immédiatement après contrôle du bateau. Café offert.</p></div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-10" style="margin-top:56px;">
+        <div><div class="serif" style="font-size:56px; line-height:1; color:var(--teal);">01</div><h3 style="margin-top:12px; font-weight:600;">Vous réservez</h3><p style="margin-top:8px; font-size:14px; color:var(--ink-2); line-height:1.7;">En ligne ou par téléphone. Acompte 50 % pour bloquer la date, solde au départ.</p></div>
+        <div><div class="serif" style="font-size:56px; line-height:1; color:var(--teal);">02</div><h3 style="margin-top:12px; font-weight:600;">Brief sécurité</h3><p style="margin-top:8px; font-size:14px; color:var(--ink-2); line-height:1.7;">30 min de prise en main, balisage, météo, manœuvres au port, gilets et équipement.</p></div>
+        <div><div class="serif" style="font-size:56px; line-height:1; color:var(--teal);">03</div><h3 style="margin-top:12px; font-weight:600;">Vous naviguez</h3><p style="margin-top:8px; font-size:14px; color:var(--ink-2); line-height:1.7;">Vous profitez sereinement et de manière responsable.</p></div>
+        <div><div class="serif" style="font-size:56px; line-height:1; color:var(--teal);">04</div><h3 style="margin-top:12px; font-weight:600;">Retour au port</h3><p style="margin-top:8px; font-size:14px; color:var(--ink-2); line-height:1.7;">Un appel à notre agence 30 min avant le retour : on vous guide pour l'accostage et le complément en carburant.</p></div>
+        <div><div class="serif" style="font-size:56px; line-height:1; color:var(--teal);">05</div><h3 style="margin-top:12px; font-weight:600;">Nettoyage &amp; caution</h3><p style="margin-top:8px; font-size:14px; color:var(--ink-2); line-height:1.7;">Nettoyage du navire par notre équipe. La caution est automatiquement clôturée à l'issue si le navire est rendu dans les conditions prévues au contrat (comptez environ 24 à 48 h pour la clôture de la caution).</p></div>
       </div>
     </div>
   </section>
@@ -164,12 +155,6 @@ import { useFleetStore } from '@/stores/fleetStore'
 import FleetCard from '@/components/fleet/FleetCard.vue'
 
 const store = useFleetStore()
-
-const licenseOpts = [
-  { value: 'all'  as const, label: 'Tous' },
-  { value: 'avec' as const, label: 'Avec permis' },
-  { value: 'sans' as const, label: 'Sans permis' },
-]
 
 const maxCapacity = computed(() =>
   store.boats.reduce((max, b) => Math.max(max, b.capacity), 0)

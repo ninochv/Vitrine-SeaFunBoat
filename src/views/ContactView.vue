@@ -40,7 +40,7 @@
             <h3 class="kicker">Deux adresses</h3>
             <div style="margin-top:14px; font-size:15px; line-height:1.6;">
               <div style="font-weight:600;">Base principale · Les Issambres</div>
-              <div style="color:var(--ink-soft);">Port de San Peire, RN 98<br/>83380 Les Issambres</div>
+              <div style="color:var(--ink-soft);">Port des Issambres, RN 98<br/>83380 Les Issambres</div>
             </div>
             <div style="margin-top:18px; font-size:15px; line-height:1.6;">
               <div style="font-weight:600;">Antenne · Sainte-Maxime</div>
@@ -127,7 +127,7 @@
   <section style="padding-top:80px;">
     <div class="container-x">
       <div class="section-num">N°04 · Nous trouver</div>
-      <h2 class="display-3" style="margin-top:14px;">Au port de San Peire.</h2>
+      <h2 class="display-3" style="margin-top:14px;">Au port des Issambres.</h2>
     </div>
     <div style="margin-top:32px;">
       <iframe

@@ -5,8 +5,8 @@
     <div style="position:absolute; bottom:-120px; left:-100px; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle, rgba(139,221,237,0.5), transparent 70%); pointer-events:none;"></div>
     <div class="container-x" style="position:relative;">
       <div class="max-w-4xl">
-        <h1 class="display-1">La référence en terme de bateaux et moteurs</h1>
-        <p class="lede" style="margin-top:28px;">Sea Fun Boat, professionnel de la location depuis 1985.<br/><br/>Forte de plusieurs années d'expérience, notre équipe se fera un plaisir de vous accueillir sur le Port des Issambres ou de Sainte-Maxime.<br/><br/>Nous ferons en sorte que votre sortie en mer vous soit des plus mémorables.</p>
+        <h1 class="display-1">La référence en terme de bateaux à moteurs</h1>
+        <p class="lede" style="margin-top:28px;">Forte de plusieurs années d'expérience, notre équipe se fera un plaisir de vous accueillir sur le Port des Issambres ou de Sainte-Maxime.<br/><br/>Nous ferons en sorte que votre sortie en mer vous soit des plus mémorables.</p>
         <div class="flex flex-wrap gap-3" style="margin-top:32px;">
           <a href="https://seafunboat.seabook.pro" target="_blank" rel="noopener" class="btn btn-rust">
             Réserver une sortie
@@ -31,10 +31,10 @@
         <div class="col-span-12 md:col-span-5">
           <div class="kicker">N°01 — Location</div>
           <h3 class="display-3" style="margin-top:10px;">Location de bateau.</h3>
-          <p style="margin-top:14px; color:var(--ink-2); line-height:1.7;">Six bateaux entretenus chaque matin par notre chantier. <strong>Coque rigide, semi-rigide, avec ou sans permis.</strong> À l'heure, à la demi-journée ou à la journée — vous choisissez votre cap.</p>
+          <p style="margin-top:14px; color:var(--ink-2); line-height:1.7;">Bateaux entretenus par nos soins. <strong>Semi-rigide, open ou cabin cruiser</strong>, prenez le cap à la journée sur notre belle Méditerranée.</p>
           <ul style="margin-top:18px; font-size:14px; line-height:1.9; color:var(--ink-2);">
-            <li>· De 5 à 12 personnes à bord</li>
-            <li>· De 40 à 300 CV — selon votre permis</li>
+            <li>· Capacités allant jusqu'à 14 personnes à bord</li>
+            <li>· Motorisation de 100 à 300 CV</li>
             <li>· Brief sécurité de 30 min inclus</li>
             <li>· Carte météo et coins préférés transmis avant le départ</li>
           </ul>
@@ -59,8 +59,8 @@
         </div>
         <div class="col-span-12 md:col-span-7 md:order-1">
           <div class="kicker">N°02 — Permis bateau</div>
-          <h3 class="display-3" style="margin-top:10px;">Bateau-école agréé.</h3>
-          <p style="margin-top:14px; color:var(--ink-2); line-height:1.7;">Trois titres préparés sur place : <strong>côtier, hauturier, fluvial</strong>. Trois moniteurs maison, deux bateaux dédiés à la formation, et un taux de réussite de <strong>92 %</strong> en 2025.</p>
+          <h3 class="display-3" style="margin-top:10px;">Bateau-école.</h3>
+          <p style="margin-top:14px; color:var(--ink-2); line-height:1.7;">Trois titres préparés sur place : <strong>côtier, hauturier, fluvial</strong>. Des moniteurs maison, un bateau et une salle de cours dédiés à la formation.</p>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" style="margin-top:22px;">
             <RouterLink :to="{ name: 'permis-cotier' }" class="card" style="padding:18px; transition:transform 200ms;"><div class="kicker">A · Le socle</div><div class="serif" style="font-size:22px; line-height:1.1; margin-top:6px;">Côtier</div><div class="mono" style="font-size:11px; color:var(--ink-soft); margin-top:8px;">dès 450 €</div></RouterLink>
             <RouterLink :to="{ name: 'permis-hauturier' }" class="card" style="padding:18px;"><div class="kicker">B · Large</div><div class="serif" style="font-size:22px; line-height:1.1; margin-top:6px;">Hauturier</div><div class="mono" style="font-size:11px; color:var(--ink-soft); margin-top:8px;">dès 650 €</div></RouterLink>
@@ -87,14 +87,13 @@
           <h3 class="display-3" style="margin-top:10px;">Neuf & occasion.</h3>
           <p style="margin-top:14px; color:var(--ink-2); line-height:1.7;">Concessionnaire officiel <strong>Selva, Marlin Boat et Protagon</strong>. Bateaux neufs configurables sur catalogue et un parc d'occasions <strong>vérifiées dans notre atelier</strong> avant mise en vente.</p>
           <ul style="margin-top:18px; font-size:14px; line-height:1.9; color:var(--ink-2);">
-            <li>· 8 annonces actives en moyenne</li>
+            <li>· Bateau neuf à la demande</li>
+            <li>· Bateau d'occasion régulièrement en vente</li>
             <li>· Visite & essai en mer sur rendez-vous</li>
-            <li>· Reprise de votre ancien bateau possible</li>
             <li>· Financement étudié avec nos partenaires</li>
           </ul>
           <div class="flex flex-wrap gap-3" style="margin-top:24px;">
             <RouterLink :to="{ name: 'vente' }" class="btn btn-navy">Parcourir les annonces</RouterLink>
-            <RouterLink :to="{ name: 'contact' }" class="btn-link">Faire estimer mon bateau →</RouterLink>
           </div>
         </div>
       </div>
@@ -114,10 +113,10 @@
         <div class="col-span-12 md:col-span-7 md:order-1">
           <div class="kicker">N°04 — Chantier naval</div>
           <h3 class="display-3" style="margin-top:10px;">L'atelier maison.</h3>
-          <p style="margin-top:14px; color:var(--ink-2); line-height:1.7;">800 m² de hangar couvert, une grue 12 tonnes, et la même équipe depuis 1985. <strong>Maintenance, hivernage, accastillage, dépannage 7 j/7</strong> — toutes marques, tous moteurs.</p>
+          <p style="margin-top:14px; color:var(--ink-2); line-height:1.7;">Vos bateaux chouchoutés sur notre terrain d'hivernage. <strong>Maintenance, hivernage, entretien, dépannage de toutes marques.</strong> Atelier sellerie également.</p>
           <div class="grid grid-cols-2 gap-3" style="margin-top:22px;">
             <RouterLink :to="{ name: 'maintenance' }" class="card" style="padding:20px;"><div class="kicker">A · Tous les jours</div><div class="serif" style="font-size:22px; line-height:1.1; margin-top:6px;">Maintenance</div><p style="margin-top:8px; font-size:13px; color:var(--ink-soft); line-height:1.5;">Révision moteur, électronique, peinture, accastillage.</p></RouterLink>
-            <RouterLink :to="{ name: 'hivernage' }" class="card" style="padding:20px;"><div class="kicker">B · Saison froide</div><div class="serif" style="font-size:22px; line-height:1.1; margin-top:6px;">Hivernage</div><p style="margin-top:8px; font-size:13px; color:var(--ink-soft); line-height:1.5;">Stockage à terre, sous hangar ou à flot. 3 formules.</p></RouterLink>
+            <RouterLink :to="{ name: 'hivernage' }" class="card" style="padding:20px;"><div class="kicker">B · Saison froide</div><div class="serif" style="font-size:22px; line-height:1.1; margin-top:6px;">Hivernage</div><p style="margin-top:8px; font-size:13px; color:var(--ink-soft); line-height:1.5;">Stockage sur notre terrain d'hivernage ou à flot. 3 formules.</p></RouterLink>
           </div>
           <RouterLink :to="{ name: 'chantier' }" class="btn-link" style="display:inline-block; margin-top:22px;">Découvrir l'atelier →</RouterLink>
         </div>
@@ -138,12 +137,13 @@
         <div class="col-span-12 md:col-span-5">
           <div class="kicker">N°05 — Services extra</div>
           <h3 class="display-3" style="margin-top:10px;">Pour la rigolade.</h3>
-          <p style="margin-top:14px; color:var(--ink-2); line-height:1.7;">Accessoires nautiques à louer avec votre bateau : <strong>bouée tractée, ski nautique, wakeboard, paddle</strong>. À ajouter directement au moment de la réservation.</p>
+          <p style="margin-top:14px; color:var(--ink-2); line-height:1.7;">Accessoires nautiques à louer avec votre bateau : <strong>bouée tractée, ski nautique, wakeboard, knee board</strong>. À ajouter directement au moment de la réservation.</p>
           <div class="grid grid-cols-2 gap-x-4 gap-y-3" style="margin-top:20px;">
-            <div class="flex items-baseline justify-between" style="padding:10px 0; border-bottom:1px solid var(--rule-soft);"><span style="font-weight:600;">Bouée tractée</span><span class="mono tnum" style="font-size:13px; color:var(--ink-soft);">35 €</span></div>
-            <div class="flex items-baseline justify-between" style="padding:10px 0; border-bottom:1px solid var(--rule-soft);"><span style="font-weight:600;">Ski nautique</span><span class="mono tnum" style="font-size:13px; color:var(--ink-soft);">35 €</span></div>
-            <div class="flex items-baseline justify-between" style="padding:10px 0; border-bottom:1px solid var(--rule-soft);"><span style="font-weight:600;">Wakeboard</span><span class="mono tnum" style="font-size:13px; color:var(--ink-soft);">35 €</span></div>
-            <div class="flex items-baseline justify-between" style="padding:10px 0; border-bottom:1px solid var(--rule-soft);"><span style="font-weight:600;">Paddle</span><span class="mono tnum" style="font-size:13px; color:var(--ink-soft);">35 €</span></div>
+            <div class="flex items-baseline justify-between" style="padding:10px 0; border-bottom:1px solid var(--rule-soft);"><span style="font-weight:600;">Bouée tractée · 1 place</span><span class="mono tnum" style="font-size:13px; color:var(--ink-soft);">30 €</span></div>
+            <div class="flex items-baseline justify-between" style="padding:10px 0; border-bottom:1px solid var(--rule-soft);"><span style="font-weight:600;">Bouée tractée · 2 places</span><span class="mono tnum" style="font-size:13px; color:var(--ink-soft);">40 €</span></div>
+            <div class="flex items-baseline justify-between" style="padding:10px 0; border-bottom:1px solid var(--rule-soft);"><span style="font-weight:600;">Ski nautique</span><span class="mono tnum" style="font-size:13px; color:var(--ink-soft);">50 €</span></div>
+            <div class="flex items-baseline justify-between" style="padding:10px 0; border-bottom:1px solid var(--rule-soft);"><span style="font-weight:600;">Wakeboard</span><span class="mono tnum" style="font-size:13px; color:var(--ink-soft);">50 €</span></div>
+            <div class="flex items-baseline justify-between" style="padding:10px 0; border-bottom:1px solid var(--rule-soft);"><span style="font-weight:600;">Knee board</span><span class="mono tnum" style="font-size:13px; color:var(--ink-soft);">50 €</span></div>
           </div>
           <a href="https://seafunboat.seabook.pro" target="_blank" rel="noopener" class="btn btn-rust" style="margin-top:24px;">Ajouter à ma réservation</a>
         </div>

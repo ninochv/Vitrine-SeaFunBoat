@@ -17,6 +17,21 @@ function minPrice(boat: JetBookBoat): number {
   return Math.min(...boat.pricing.map((p) => parseFloat(p.price)))
 }
 
+// ──────────────────────────────────────────────────────────────────
+// ORDRE PAR DÉFAUT DE LA FLOTTE (tri « Suggéré »)
+// Ordre déterministe et stable : capacité décroissante, puis puissance
+// décroissante, puis nom A→Z. Il ne dépend donc plus de l'ordre d'arrivée
+// des données. Pour imposer un ordre précis, modifier ce comparateur
+// (ou trier sur un futur champ de priorité fourni par le client).
+// ──────────────────────────────────────────────────────────────────
+function defaultOrder(a: JetBookBoat, b: JetBookBoat): number {
+  return (
+    b.capacity - a.capacity ||
+    (b.horsepower ?? 0) - (a.horsepower ?? 0) ||
+    a.name.localeCompare(b.name)
+  )
+}
+
 export const useFleetStore = defineStore('fleet', () => {
   const boats = ref<JetBookBoat[]>([])
   const loading = ref(false)
@@ -58,6 +73,7 @@ export const useFleetStore = defineStore('fleet', () => {
     if (sortBy.value === 'price-desc') result.sort((a, b) => minPrice(b) - minPrice(a))
     if (sortBy.value === 'power')      result.sort((a, b) => (b.horsepower ?? 0) - (a.horsepower ?? 0))
     if (sortBy.value === 'capacity')   result.sort((a, b) => b.capacity - a.capacity)
+    if (sortBy.value === 'default')    result.sort(defaultOrder)
     return result
   })
 
