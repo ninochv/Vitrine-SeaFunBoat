@@ -25,7 +25,7 @@
         <div class="col-span-12 md:col-span-7">
           <div class="photo-slot photo-slot--photo" style="aspect-ratio:16/10; background-image:linear-gradient(rgba(6,41,66,0.08),rgba(6,41,66,0.45)),url('/img/Location.png'); background-size:cover; background-position:center;">
             <div class="photo-slot__corner">01 · Location</div>
-            <div class="photo-slot__cap">Semi-rigide Marlin 790 au mouillage · Crique de Pampelonne</div>
+            <div class="photo-slot__cap">Semi-rigide Marlin 915 en sortie de port</div>
           </div>
         </div>
         <div class="col-span-12 md:col-span-5">
@@ -62,9 +62,9 @@
           <h3 class="display-3" style="margin-top:10px;">Bateau-école.</h3>
           <p style="margin-top:14px; color:var(--ink-2); line-height:1.7;">Trois titres préparés sur place : <strong>côtier, hauturier, fluvial</strong>. Des moniteurs maison, un bateau et une salle de cours dédiés à la formation.</p>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" style="margin-top:22px;">
-            <RouterLink :to="{ name: 'permis-cotier' }" class="card" style="padding:18px; transition:transform 200ms;"><div class="kicker">A · Le socle</div><div class="serif" style="font-size:22px; line-height:1.1; margin-top:6px;">Côtier</div><div class="mono" style="font-size:11px; color:var(--ink-soft); margin-top:8px;">dès 450 €</div></RouterLink>
-            <RouterLink :to="{ name: 'permis-hauturier' }" class="card" style="padding:18px;"><div class="kicker">B · Large</div><div class="serif" style="font-size:22px; line-height:1.1; margin-top:6px;">Hauturier</div><div class="mono" style="font-size:11px; color:var(--ink-soft); margin-top:8px;">dès 650 €</div></RouterLink>
-            <RouterLink :to="{ name: 'permis-fluvial' }" class="card" style="padding:18px;"><div class="kicker">C · Eaux douces</div><div class="serif" style="font-size:22px; line-height:1.1; margin-top:6px;">Fluvial</div><div class="mono" style="font-size:11px; color:var(--ink-soft); margin-top:8px;">dès 150 €</div></RouterLink>
+            <RouterLink :to="{ name: 'permis-cotier' }" class="card" style="padding:18px; transition:transform 200ms;"><div class="kicker">A · Le classique</div><div class="serif" style="font-size:22px; line-height:1.1; margin-top:6px;">Côtier</div><div class="mono" style="font-size:11px; color:var(--ink-soft); margin-top:8px;">dès 450 €</div></RouterLink>
+            <RouterLink :to="{ name: 'permis-hauturier' }" class="card" style="padding:18px;"><div class="kicker">B · Le supérieur</div><div class="serif" style="font-size:22px; line-height:1.1; margin-top:6px;">Hauturier</div><div class="mono" style="font-size:11px; color:var(--ink-soft); margin-top:8px;">dès 650 €</div></RouterLink>
+            <RouterLink :to="{ name: 'permis-fluvial' }" class="card" style="padding:18px;"><div class="kicker">C · Eaux Intérieures</div><div class="serif" style="font-size:22px; line-height:1.1; margin-top:6px;">Extension Fluvial</div><div class="mono" style="font-size:11px; color:var(--ink-soft); margin-top:8px;">dès 150 €</div></RouterLink>
           </div>
           <RouterLink :to="{ name: 'permis' }" class="btn-link" style="display:inline-block; margin-top:22px;">Tous les permis →</RouterLink>
         </div>
@@ -79,13 +79,13 @@
         <div class="col-span-12 md:col-span-7">
           <div class="photo-slot photo-slot--photo" style="aspect-ratio:16/10; background-image:linear-gradient(rgba(6,41,66,0.08),rgba(6,41,66,0.45)),url('/img/boat-sales.png'); background-size:cover; background-position:center;">
             <div class="photo-slot__corner">03 · Vente</div>
-            <div class="photo-slot__cap">Salon nautique — stand Marlin Boat, gamme 2026</div>
+            <div class="photo-slot__cap">Salon nautique — stand Marlin Boat, Salon Nautique de Paris</div>
           </div>
         </div>
         <div class="col-span-12 md:col-span-5">
           <div class="kicker">N°03 — Vente</div>
           <h3 class="display-3" style="margin-top:10px;">Neuf & occasion.</h3>
-          <p style="margin-top:14px; color:var(--ink-2); line-height:1.7;">Concessionnaire officiel <strong>Selva, Marlin Boat et Protagon</strong>. Bateaux neufs configurables sur catalogue et un parc d'occasions <strong>vérifiées dans notre atelier</strong> avant mise en vente.</p>
+          <p style="margin-top:14px; color:var(--ink-2); line-height:1.7;">Concessionnaire officiel <strong>SELVA MARINE, Marlin Boat et Protagon</strong>. Bateaux neufs configurables sur catalogue et un parc d'occasions <strong>vérifiées dans notre atelier</strong> avant mise en vente.</p>
           <ul style="margin-top:18px; font-size:14px; line-height:1.9; color:var(--ink-2);">
             <li>· Bateau neuf à la demande</li>
             <li>· Bateau d'occasion régulièrement en vente</li>

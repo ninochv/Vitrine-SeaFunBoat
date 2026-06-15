@@ -11,7 +11,7 @@
           <h1 class="display-1" style="margin-top:14px;">Notre flotte.</h1>
         </div>
         <div class="col-span-12 md:col-span-4">
-          <p class="lede">Des bateaux entretenus quotidiennement par notre chantier, prêts à partir d'Issambres ou de Sainte-Maxime.</p>
+          <p class="lede">Des bateaux entretenus quotidiennement par notre chantier, prêts à partir des Issambres ou de Sainte-Maxime.</p>
         </div>
       </div>
       <div class="rule" style="margin-top:36px;"></div>
@@ -29,7 +29,6 @@
           <div class="kicker" style="margin-top:6px;">Capacité max</div>
         </div>
         <div><div class="serif tnum" style="font-size:52px; line-height:1;">02</div><div class="kicker" style="margin-top:6px;">Ports de départ</div></div>
-        <div><div class="serif tnum" style="font-size:52px; line-height:1;">40<span style="font-size:24px;"> ans</span></div><div class="kicker" style="margin-top:6px;">À votre service</div></div>
       </div>
     </div>
   </section>
