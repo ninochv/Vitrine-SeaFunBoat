@@ -46,7 +46,7 @@
             <div style="margin-top:14px;">
               <a href="tel:0494494466" class="hover:underline" style="display:block;">04 94 49 44 66</a>
               <a href="tel:0617284047" class="hover:underline" style="display:block;">06 17 28 40 47 (dépannage)</a>
-              <a href="mailto:seafunboat@gmail.com" class="hover:underline" style="display:block; margin-top:4px;">seafunboat@gmail.com</a>
+              <a href="mailto:contact@seafunboat.fr" class="hover:underline" style="display:block; margin-top:4px;">contact@seafunboat.fr</a>
             </div>
           </div>
         </div>

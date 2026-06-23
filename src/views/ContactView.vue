@@ -33,7 +33,7 @@
           </div>
           <div style="margin-top:32px; padding-top:24px; border-top:1px solid var(--rule);">
             <h3 class="kicker">Email</h3>
-            <a href="mailto:seafunboat@gmail.com" class="serif" style="display:block; font-size:24px; line-height:1.2; margin-top:6px; color:var(--ink); word-break:break-all;">seafunboat@gmail.com</a>
+            <a href="mailto:contact@seafunboat.fr" class="serif" style="display:block; font-size:24px; line-height:1.2; margin-top:6px; color:var(--ink); word-break:break-all;">contact@seafunboat.fr</a>
             <p style="margin-top:8px; font-size:13px; color:var(--ink-soft);">Pour les devis & demandes administratives</p>
           </div>
           <div style="margin-top:32px; padding-top:24px; border-top:1px solid var(--rule);">
