@@ -33,6 +33,8 @@ export interface JetBookBoat {
   model: string
   year: number | null
   horsepower: number | null
+  engine_count: number | null
+  power_display: string | null
   capacity: number
   fleet_number: string | null
   is_active: boolean

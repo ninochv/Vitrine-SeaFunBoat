@@ -11,26 +11,18 @@
         >
           <!-- Corner : specs rapides -->
           <div class="photo-slot__corner">
-            {{ group.representative.capacity }} pers<template v-if="group.representative.horsepower"> · {{ group.representative.horsepower }} CV</template>
+            {{ group.representative.capacity }} pers<template v-if="powerLabel"> · {{ powerLabel }}</template>
           </div>
 
           <!-- Caption : nom du modèle -->
           <div class="photo-slot__cap">{{ group.name }}</div>
 
-          <!-- Badge permis -->
-          <span
-            v-if="group.representative.license_required"
-            class="tag tag-teal"
-            style="position:absolute; top:14px; left:14px;"
-          >Permis requis</span>
-
-          <!-- Badge unités -->
-          <span
-            v-if="group.units > 1"
-            class="tag"
-            style="position:absolute; top:14px; left:14px;"
-            :style="group.representative.license_required ? 'top:46px;' : ''"
-          >{{ group.units }} unités</span>
+          <!-- Badges (empilés en haut à gauche) -->
+          <div style="position:absolute; top:14px; left:14px; display:flex; flex-direction:column; align-items:flex-start; gap:8px;">
+            <span v-if="group.representative.license_required" class="tag tag-teal">Permis requis</span>
+            <span v-if="isBiMoteur" class="tag tag-amber">Bi-moteur</span>
+            <span v-if="group.units > 1" class="tag">{{ group.units }} unités</span>
+          </div>
 
           <!-- Carousel : prev / next -->
           <template v-if="group.allImages.length > 1">
@@ -75,8 +67,8 @@
 
         <div style="margin-top:18px;">
           <div class="spec-row"><span>Capacité</span><span>{{ group.representative.capacity }} personnes</span></div>
-          <div v-if="group.representative.horsepower" class="spec-row">
-            <span>Puissance moteur</span><span>{{ group.representative.horsepower }} CV</span>
+          <div v-if="powerLabel" class="spec-row">
+            <span>Motorisation</span><span>{{ powerLabel }}</span>
           </div>
           <div class="spec-row">
             <span>Permis</span>
@@ -132,6 +124,17 @@ const props = defineProps<{ group: GroupedBoat }>()
 const currentImg = ref(0)
 function prev() { currentImg.value = (currentImg.value - 1 + props.group.allImages.length) % props.group.allImages.length }
 function next() { currentImg.value = (currentImg.value + 1) % props.group.allImages.length }
+
+// Bi-moteur : engine_count >= 2
+const isBiMoteur = computed(() => (props.group.representative.engine_count ?? 1) >= 2)
+
+// Libellé motorisation : préfère le power_display de l'API ("2 × 200 CV"),
+// sinon retombe sur la puissance simple ("200 CV")
+const powerLabel = computed(() => {
+  const rep = props.group.representative
+  if (rep.power_display) return rep.power_display
+  return rep.horsepower ? `${rep.horsepower} CV` : ''
+})
 
 const currentBgImage = computed(() => {
   const src = props.group.allImages[currentImg.value]

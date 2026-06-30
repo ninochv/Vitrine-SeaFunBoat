@@ -17,6 +17,11 @@ function minPrice(boat: JetBookBoat): number {
   return Math.min(...boat.pricing.map((p) => parseFloat(p.price)))
 }
 
+// Puissance totale = puissance unitaire × nombre de moteurs (bi-moteur compris)
+function totalPower(boat: JetBookBoat): number {
+  return (boat.horsepower ?? 0) * (boat.engine_count ?? 1)
+}
+
 export const useFleetStore = defineStore('fleet', () => {
   const boats = ref<JetBookBoat[]>([])
   const loading = ref(false)
@@ -56,7 +61,7 @@ export const useFleetStore = defineStore('fleet', () => {
     if (filterLicense.value === 'sans') result = result.filter((b) => !b.license_required)
     if (sortBy.value === 'price-asc')  result.sort((a, b) => minPrice(a) - minPrice(b))
     if (sortBy.value === 'price-desc') result.sort((a, b) => minPrice(b) - minPrice(a))
-    if (sortBy.value === 'power')      result.sort((a, b) => (b.horsepower ?? 0) - (a.horsepower ?? 0))
+    if (sortBy.value === 'power')      result.sort((a, b) => totalPower(b) - totalPower(a))
     if (sortBy.value === 'capacity')   result.sort((a, b) => b.capacity - a.capacity)
     return result
   })
