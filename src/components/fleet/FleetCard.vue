@@ -59,13 +59,13 @@
           <template v-else>{{ group.representative.location.city }}</template>
         </div>
 
-        <h3 class="serif" style="font-size:32px; line-height:1.05; margin-top:6px;">{{ group.name }}</h3>
+        <h3 class="serif" style="font-size:32px; line-height:1.05; margin-top:8px;">{{ group.name }}</h3>
 
-        <p v-if="group.representative.description" style="margin-top:8px; font-size:15px; line-height:1.6; color:var(--ink-2); max-width:48ch;">
+        <p v-if="group.representative.description" style="margin-top:14px; font-size:15px; line-height:1.85; letter-spacing:0.01em; color:var(--ink-2); max-width:54ch; white-space:pre-line;">
           {{ group.representative.description }}
         </p>
 
-        <div style="margin-top:18px;">
+        <div style="margin-top:24px;">
           <div class="spec-row"><span>Capacité</span><span>{{ group.representative.capacity }} personnes</span></div>
           <div v-if="powerLabel" class="spec-row">
             <span>Motorisation</span><span>{{ powerLabel }}</span>

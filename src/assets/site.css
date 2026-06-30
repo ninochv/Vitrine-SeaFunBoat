@@ -4,40 +4,40 @@
    ============================================================ */
 :root {
   /* === Tons === */
-  --sky:       #EAF4FA;   /* ciel pâle — fond de page */
-  --sky-2:     #D9EAF4;
-  --sky-3:     #BFDCEC;
+  --sky:       #EAF6FC;   /* ciel pâle — fond de page */
+  --sky-2:     #D6EDF8;
+  --sky-3:     #BBE0F2;
   --paper:     #FFFFFF;
   --cream:     #FFFFFF;   /* alias historique */
-  --ink:       #062942;   /* bleu encre profond */
-  --ink-2:     #1F4E70;
+  --ink:       #0B1A26;   /* noir bleuté profond (≈ noir) */
+  --ink-2:     #234B66;
   --ink-soft:  #5C7E9A;
-  --rule:      #C9DEEC;
-  --rule-soft: #E1EDF5;
+  --rule:      #C9E2F0;
+  --rule-soft: #E3F0F8;
 
-  /* === Bleus de marque === */
-  --ocean:        #0B6FB0;   /* bleu primaire (CTA, marque) */
-  --ocean-deep:   #08568B;
-  --ocean-hover:  #0A5E97;
-  --ocean-light:  #CCE4F2;
+  /* === Bleus de marque (bleu ciel vif du logo) === */
+  --ocean:        #0077BE;   /* bleu ciel primaire (CTA, marque, liens) */
+  --ocean-deep:   #005E99;
+  --ocean-hover:  #006AAB;
+  --ocean-light:  #CDE9F7;
 
-  /* === Eaux turquoises === */
-  --wave:         #18B0CC;   /* lagon */
-  --wave-deep:    #0D8AA1;
-  --wave-light:   #8BDDED;
+  /* === Eaux turquoises (éclat cyan du logo) === */
+  --wave:         #16B6E0;   /* cyan ciel vif */
+  --wave-deep:    #0C82AE;
+  --wave-light:   #8FE0F2;
 
   /* Compat ancien token */
   --teal:         var(--wave);
   --teal-light:   var(--wave-light);
 
-  /* === Soleil & sable === */
-  --sun:          #F4A65A;   /* coucher de soleil — CTA chaleureux */
-  --sun-deep:     #D9853A;
-  --sun-light:    #FAD3A8;
-  --sand:         #FBE5C2;
+  /* === Jaune soleil (accent énergique / CTA) === */
+  --sun:          #FFC21A;   /* jaune vif — boutons d'action (texte sombre) */
+  --sun-deep:     #EAA600;   /* survol bouton jaune */
+  --sun-light:    #FFE7A3;
+  --sand:         #FFEDC2;
 
-  /* Compat ancien token */
-  --rust:         var(--sun);
+  /* Accent ambré lisible (texte sur fond clair : tél., alertes, actifs) */
+  --rust:         #C77A12;
 
   /* === Type === */
   --font-display: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
@@ -54,7 +54,7 @@
   /* Ombres douces */
   --shadow-1: 0 1px 2px rgba(6, 41, 66, 0.04), 0 4px 12px rgba(6, 41, 66, 0.05);
   --shadow-2: 0 4px 10px rgba(6, 41, 66, 0.06), 0 16px 40px rgba(6, 41, 66, 0.08);
-  --shadow-warm: 0 6px 16px rgba(244, 166, 90, 0.28);
+  --shadow-warm: 0 6px 16px rgba(255, 194, 26, 0.32);
 }
 
 * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -112,8 +112,8 @@ em { font-style: italic; color: var(--wave-deep); }
 }
 .btn:hover { transform: translateY(-1px); }
 
-.btn-rust   { background: var(--sun); color: #fff; box-shadow: var(--shadow-warm); }
-.btn-rust:hover   { background: var(--sun-deep); }
+.btn-rust   { background: var(--sun); color: var(--ink); box-shadow: var(--shadow-warm); }
+.btn-rust:hover   { background: var(--sun-deep); color: var(--ink); }
 
 .btn-navy   { background: var(--ocean); color: #fff; box-shadow: var(--shadow-1); }
 .btn-navy:hover   { background: var(--ocean-deep); }
@@ -122,7 +122,7 @@ em { font-style: italic; color: var(--wave-deep); }
 .btn-ghost:hover  { background: var(--ocean); color: #fff; border-color: var(--ocean); }
 
 .btn-link   { color: var(--ocean); border-bottom: 1.5px solid var(--ocean); padding-bottom: 2px; font-weight: 600; }
-.btn-link:hover   { color: var(--sun-deep); border-color: var(--sun-deep); }
+.btn-link:hover   { color: var(--rust); border-color: var(--rust); }
 
 /* Photo placeholder — vibe ciel/mer/soleil ──────────────── */
 .photo-slot {
@@ -183,7 +183,7 @@ em { font-style: italic; color: var(--wave-deep); }
   background: var(--sky-2); color: var(--ink);
   border-radius: 999px;
 }
-.tag-rust  { background: var(--sun);   color: #fff; }
+.tag-rust  { background: var(--sun);   color: var(--ink); }
 .tag-teal  { background: var(--wave);  color: #fff; }
 .tag-amber { background: #F8C95A;      color: #4D3617; }
 
@@ -266,8 +266,8 @@ em { font-style: italic; color: var(--wave-deep); }
 .tnum { font-variant-numeric: tabular-nums; }
 
 /* Header ────────────────────────────────────────────────── */
-.site-header { position: sticky; top: 0; z-index: 40; background: rgba(234, 244, 250, 0.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule-soft); }
-.site-header.is-scrolled { background: rgba(234, 244, 250, 0.96); box-shadow: 0 4px 14px rgba(6,41,66,0.05); }
+.site-header { position: sticky; top: 0; z-index: 40; background: rgba(234, 246, 252, 0.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule-soft); }
+.site-header.is-scrolled { background: rgba(234, 246, 252, 0.96); box-shadow: 0 4px 14px rgba(11,26,38,0.06); }
 
 /* Mobile nav ────────────────────────────────────────────── */
 .mobile-nav { background: var(--paper); border-top: 1px solid var(--rule-soft); padding: 14px 0 8px; }
@@ -328,8 +328,8 @@ em { font-style: italic; color: var(--wave-deep); }
 
 /* Bouton "réserver" pulsant subtil (mobile sticky) */
 @keyframes sun-pulse {
-  0%, 100% { box-shadow: 0 6px 16px rgba(244, 166, 90, 0.28); }
-  50%      { box-shadow: 0 6px 22px rgba(244, 166, 90, 0.50); }
+  0%, 100% { box-shadow: 0 6px 16px rgba(255, 194, 26, 0.30); }
+  50%      { box-shadow: 0 6px 22px rgba(255, 194, 26, 0.55); }
 }
 .pulse-warm { animation: sun-pulse 2.6s ease-in-out infinite; }
 

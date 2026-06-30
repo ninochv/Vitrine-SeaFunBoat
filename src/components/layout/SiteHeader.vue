@@ -4,10 +4,10 @@
     <div class="hidden md:block" style="background:var(--ink); color:var(--cream);">
       <div class="container-x flex items-center justify-between" style="height:34px; font-size:12px;">
         <div class="flex items-center gap-5" style="font-family:var(--font-mono); letter-spacing:0.04em;">
-          <span>Port de San Peire · Les Issambres · Sainte-Maxime</span>
+          <span>Port des Issambres · Sainte-Maxime</span>
         </div>
         <div class="flex items-center gap-5" style="font-family:var(--font-mono); letter-spacing:0.04em;">
-          <span>Lun – Sam · 9h00 → 18h30</span>
+          <span>Lun – Sam · 9h00 → 18h00</span>
           <a href="tel:0494494466" class="flex items-center gap-1.5 hover:text-[var(--teal-light)]">
             <span class="w-3 h-3 inline-block" v-html="icons.phone"></span>
             04 94 49 44 66
@@ -18,10 +18,8 @@
 
     <div class="container-x">
       <div class="flex items-center justify-between" style="height:78px;">
-        <RouterLink :to="{ name: 'home' }" class="flex items-baseline gap-3 group">
-          <div style="font-family:var(--font-serif); font-size:26px; line-height:1; color:var(--ink); letter-spacing:-0.02em;">
-            Sea Fun Boat
-          </div>
+        <RouterLink :to="{ name: 'home' }" class="flex items-center gap-3 group" aria-label="Sea Fun Boat — accueil">
+          <img src="/img/logo-sea-fun-boat.jpg" alt="Sea Fun Boat" style="height:54px; width:auto; display:block; mix-blend-mode:multiply;" />
         </RouterLink>
 
         <nav class="hidden lg:flex items-center" style="gap:28px; font-size:14px; font-weight:500;">

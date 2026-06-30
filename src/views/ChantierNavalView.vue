@@ -10,7 +10,7 @@
           <h1 class="display-1" style="margin-top:14px;">L'atelier.</h1>
         </div>
         <div class="col-span-12 md:col-span-4">
-          <p class="lede">Tout ce qui touche votre bateau, de la sortie d'eau à la révision moteur, passe entre les mains des mêmes mécaniciens, dans le même hangar, depuis 1985.</p>
+          <p class="lede">Tout ce qui touche votre bateau, de la sortie d'eau à la révision moteur, passe entre les mains de notre équipe, sur notre terrain d'hivernage.</p>
         </div>
       </div>
     </div>
@@ -20,7 +20,7 @@
     <div class="container-x">
       <div class="photo-slot photo-slot--photo" style="aspect-ratio:16/7; min-height:300px; background-image:linear-gradient(rgba(6,41,66,0.08),rgba(6,41,66,0.45)),url('/img/chantier-navale.png'); background-size:cover; background-position:center;">
         <div class="photo-slot__corner">PHOTO 01 · atelier</div>
-        <div class="photo-slot__cap">Vue d'atelier · pont roulant et zone de mécanique</div>
+        <div class="photo-slot__cap">Vue d'atelier · zone de mécanique et sellerie</div>
       </div>
     </div>
   </section>
@@ -54,13 +54,13 @@
           <RouterLink :to="{ name: 'hivernage' }">
             <div class="photo-slot photo-slot--photo" style="aspect-ratio:4/3; background-image:linear-gradient(rgba(6,41,66,0.08),rgba(6,41,66,0.45)),url('/img/hivernage.jpg'); background-size:cover; background-position:center;">
               <div class="photo-slot__corner">PHOTO · hivernage</div>
-              <div class="photo-slot__cap">Hangar couvert — bateaux sur bers, hiver 2024</div>
+              <div class="photo-slot__cap">Terrain d'hivernage — bateaux sur bers, hiver 2024</div>
             </div>
           </RouterLink>
           <div style="padding-top:22px;">
             <div class="kicker">B · Sous-page</div>
             <h3 class="serif" style="font-size:42px; line-height:1; margin-top:8px;">Hivernage</h3>
-            <p style="margin-top:12px; color:var(--ink-2); line-height:1.7; max-width:48ch;">Stockage à terre, sous hangar couvert ou à flot. Programme d'hivernage moteur complet, antifouling, polish, remise à l'eau au printemps.</p>
+            <p style="margin-top:12px; color:var(--ink-2); line-height:1.7; max-width:48ch;">Stockage sur notre terrain d'hivernage ou à flot. Programme d'hivernage moteur complet, antifouling, polish, remise à l'eau au printemps.</p>
             <a href="https://seafunboat.seabook.pro" target="_blank" rel="noopener" class="btn-link" style="display:inline-block; margin-top:18px;">Réserver son emplacement →</a>
           </div>
         </article>

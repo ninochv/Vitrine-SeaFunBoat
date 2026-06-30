@@ -12,7 +12,7 @@
           <h1 class="display-1" style="margin-top:14px;">Hivernage,<br/><em>au sec</em>.</h1>
         </div>
         <div class="col-span-12 md:col-span-4">
-          <p class="lede">Stockage à terre sous hangar couvert ou à flot. Programme d'hivernage moteur complet, antifouling, polish — remise à l'eau clé en main au printemps.</p>
+          <p class="lede">Stockage à terre sur notre terrain d'hivernage ou à flot. Programme d'hivernage moteur complet, antifouling, polish — remise à l'eau clé en main au printemps.</p>
         </div>
       </div>
     </div>
@@ -21,8 +21,8 @@
   <section>
     <div class="container-x">
       <div class="photo-slot photo-slot--photo" style="aspect-ratio:16/7; min-height:280px; background-image:linear-gradient(rgba(6,41,66,0.08),rgba(6,41,66,0.45)),url('/img/hivernage.jpg'); background-size:cover; background-position:center;">
-        <div class="photo-slot__corner">PHOTO 01 · hangar</div>
-        <div class="photo-slot__cap">Hangar couvert — bateaux sur bers, stockage à sec</div>
+        <div class="photo-slot__corner">PHOTO 01 · hivernage</div>
+        <div class="photo-slot__cap">Terrain d'hivernage — bateaux sur bers, stockage à sec</div>
       </div>
     </div>
   </section>
@@ -53,7 +53,7 @@
         <div>
           <div class="serif tnum" style="font-size:60px; line-height:1; color:var(--teal);">01</div>
           <h3 style="margin-top:10px; font-weight:600;">Sortie d'eau</h3>
-          <p style="margin-top:8px; font-size:14px; color:var(--ink-2); line-height:1.6;">Levage par grue ou chariot élévateur. Transport jusqu'à l'emplacement dédié dans le hangar ou en extérieur.</p>
+          <p style="margin-top:8px; font-size:14px; color:var(--ink-2); line-height:1.6;">Sortie d'eau et transport jusqu'à l'emplacement dédié sur notre terrain d'hivernage.</p>
         </div>
         <div>
           <div class="serif tnum" style="font-size:60px; line-height:1; color:var(--teal);">02</div>
@@ -80,7 +80,7 @@
         <div class="grid grid-cols-12 gap-6 items-center">
           <div class="col-span-12 md:col-span-8">
             <h2 class="display-3">Réserver un emplacement</h2>
-            <p style="margin-top:12px; color:var(--ink-2); line-height:1.6;">Places limitées — réservez avant le 1er novembre pour garantir votre emplacement sous hangar couvert.</p>
+            <p style="margin-top:12px; color:var(--ink-2); line-height:1.6;">Places limitées — réservez avant le 1er novembre pour garantir votre emplacement sur notre terrain d'hivernage.</p>
           </div>
           <div class="col-span-12 md:col-span-4 md:text-right flex flex-col gap-2 md:items-end">
             <a href="tel:0617284047" class="btn btn-rust">Appeler : 06 17 28 40 47</a>
@@ -94,8 +94,8 @@
 
 <script setup lang="ts">
 const formules = [
-  { num: 'B·1', title: 'Hangar couvert',      desc: 'Stockage à l\'abri des intempéries dans notre hangar fermé. Solution idéale pour protéger la coque, la sellerie et les équipements électroniques pendant la saison froide.' },
-  { num: 'B·2', title: 'Extérieur sur bers',  desc: 'Stationnement sécurisé à l\'extérieur sur bers adaptés à la taille de votre bateau. Bâche de protection fournie sur demande. Tarif économique.' },
+  { num: 'B·1', title: 'Hivernage à terre',    desc: 'Stationnement sécurisé sur notre terrain d\'hivernage, sur bers adaptés à la taille de votre bateau. Bâche de protection fournie sur demande. Tarif économique.' },
+  { num: 'B·2', title: 'Hivernage à flot',     desc: 'Votre bateau reste à son poste au port pendant la saison froide, avec surveillance et entretien régulier. Idéal pour garder un accès facile hors saison.' },
   { num: 'B·3', title: 'Hivernage complet',   desc: 'Formule tout compris : sortie d\'eau, hivernage moteur, antifouling, polish et remise à l\'eau au printemps. Un interlocuteur unique pour toute la saison.' },
   { num: 'B·4', title: 'Stationnement annuel', desc: 'Emplacement à l\'année pour les propriétaires qui souhaitent un accès régulier à leur bateau hors saison. Accès 7 j / 7 sur rendez-vous.' },
 ]

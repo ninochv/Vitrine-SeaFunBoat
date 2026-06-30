@@ -6,11 +6,11 @@
       </div>
       <div class="grid grid-cols-12 gap-6 items-end" style="margin-top:32px;">
         <div class="col-span-12 md:col-span-8">
-          <div class="kicker">N°04 · Bateau-école agréé</div>
+          <div class="kicker">N°04 · Bateau-école</div>
           <h1 class="display-1" style="margin-top:14px;">Apprendre<br/>à <em>tenir une barre</em>.</h1>
         </div>
         <div class="col-span-12 md:col-span-4">
-          <p class="lede">Trois titulaires d'agrément, deux bateaux dédiés à la formation, des dates posées chaque semaine. Vous choisissez votre rythme.</p>
+          <p class="lede">Des moniteurs titulaires d'agrément, un bateau et une salle de cours dédiés à la formation, des dates posées chaque semaine. Vous choisissez votre rythme.</p>
         </div>
       </div>
     </div>
@@ -101,7 +101,7 @@
         <div><div class="serif tnum" style="font-size:54px; line-height:1; color:var(--teal);">01</div><h3 style="margin-top:10px; font-weight:600;">Inscription</h3><p style="margin-top:6px; font-size:14px; color:var(--ink-2); line-height:1.6;">Dossier en 20 min au comptoir. Vous repartez avec votre livret de code.</p></div>
         <div><div class="serif tnum" style="font-size:54px; line-height:1; color:var(--teal);">02</div><h3 style="margin-top:10px; font-weight:600;">Code à votre rythme</h3><p style="margin-top:6px; font-size:14px; color:var(--ink-2); line-height:1.6;">Accès à la plateforme en ligne + soirées de révision en agence (mar. & jeu.).</p></div>
         <div><div class="serif tnum" style="font-size:54px; line-height:1; color:var(--teal);">03</div><h3 style="margin-top:10px; font-weight:600;">Pratique en mer</h3><p style="margin-top:6px; font-size:14px; color:var(--ink-2); line-height:1.6;">3 h 30 sur notre bateau-école dédié, en binôme ou seul, selon vos préférences.</p></div>
-        <div><div class="serif tnum" style="font-size:54px; line-height:1; color:var(--teal);">04</div><h3 style="margin-top:10px; font-weight:600;">Examen</h3><p style="margin-top:6px; font-size:14px; color:var(--ink-2); line-height:1.6;">Présentation à l'examen au centre de Fréjus. 92 % de réussite en 2025.</p></div>
+        <div><div class="serif tnum" style="font-size:54px; line-height:1; color:var(--teal);">04</div><h3 style="margin-top:10px; font-weight:600;">Examen</h3><p style="margin-top:6px; font-size:14px; color:var(--ink-2); line-height:1.6;">Présentation à l'examen au centre de Fréjus. La grande majorité de nos élèves valident dès le premier passage.</p></div>
       </div>
     </div>
   </section>
